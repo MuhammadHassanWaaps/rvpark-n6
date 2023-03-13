@@ -1,0 +1,60 @@
+<div class="home-slider-outer">
+  <div class="main-slider">
+    <swiper class="swiper-outer" #swiper style="border-bottom: 1px solid #ebebeb; padding-bottom: 15.5px"
+      [config]="config">
+      <ng-template swiperSlide class="swiper-inner" *ngFor="let item of park_data">
+        <div class="parentdiv"  (click)="menuDetails(item)">
+          <div class="image">
+            <img style="width: 100%" class="content-outer slider-cover-background" [src]="getImageUrl(item)" />
+            <div class="heart">
+              <img src="assets/images/heart.png" />
+            </div>
+          </div>
+          <div class="area">
+            <ion-item class="ion-no-padding" lines="none">
+              <ion-label>
+                <h2 class="sanseriflf demibold name">{{ item.name }}</h2>
+                <p><span class="locationspan">
+                  <img src="assets/images/locationIcon.png" />
+                  <p class="location poppins">
+                    &nbsp; {{ item.address }}.
+                  </p>
+                  <!-- <div></div> -->
+                </span></p>
+              </ion-label>
+              <ion-button slot="end" fill="clear" class="ion-no-margin">
+                <img src="assets/images/star.png" /><b class="new SansSerifFLF">&nbsp;
+                  New</b>
+              </ion-button>
+            </ion-item>
+            <!-- <div>
+              <p class="sanseriflf name">{{ item.name }}</p>
+
+              <span class="locationspan">
+                <img src="assets/images/locationIcon.png" />
+                <p class="location poppins">
+                  &nbsp; {{ item.location }}, {{ item.country }}.
+                </p>
+
+              </span>
+            </div> -->
+
+            <!-- <div>
+              <img src="assets/images/star.png" /><b class="new SansSerifFLF">&nbsp;
+                New</b>
+            </div> -->
+          </div>
+        </div>
+      </ng-template>
+    </swiper>
+    <hr style="border-top: 1px red" />
+    <!-- <div>
+      <h1 class="sanseriflf">Featured Listing</h1>
+      <div *ngIf="role_id === '2'">
+        <div [ngClass]="role_id === '2' ? 'userClass' : ''" *ngFor="let item of park_data">
+          <app-item-box-ph class="menu" [item]="item" (click)="menuDetails(item)"></app-item-box-ph>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>

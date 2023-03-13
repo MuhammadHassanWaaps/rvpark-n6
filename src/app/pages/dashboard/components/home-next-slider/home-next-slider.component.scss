@@ -1,0 +1,147 @@
+.userClass{
+  width: 45.5%;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  display: inline-block;
+  margin-top: 10px;
+  margin-right:16px;
+}
+.home-slider-outer {
+  position: relative;
+}
+
+.main-slider {
+  padding: 20px;
+  padding-bottom: 0px;
+}
+
+.content-outer {
+  // background-color: red;
+  width: 100%;
+  // padding-top: 49.85%;
+  /* w 335 h 167 ~ 0.4985  1:1 Aspect Ratio */
+  position: relative;
+  /* If you want text inside of it */
+  border-radius: 20px;
+}
+
+.slider-cover-background {
+  position: relative;
+  background-position: center center !important;
+  background-size: cover !important;
+  width: 100%;
+  height: 224px;
+}
+
+.shade-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+}
+
+.text-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.heading-2633 {
+  font-size: 28px;
+  color: #ffffff;
+  width: 250px;
+  // border: 2px solid red;
+}
+
+.subheading-2633 {
+  font-size: 9px;
+  color: #ffffff;
+}
+
+.btn-32635 {
+  font-size: 9px;
+}
+
+
+.parentdiv {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.area {
+  width: 100%;
+  // margin-top: 9px;
+  // background-color: #a1a8a0;
+  // display: flex;
+  // justify-content: space-between;
+}
+
+.name {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 5px;
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.location {
+  color: #167206;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.locationspan {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: auto;
+  // background-color: #167206;
+}
+
+.new {
+  color: green;
+  font-size: 14px;
+  font-weight: 200;
+}
+
+.heart {
+
+  position:absolute;
+  top: 10px;
+  right: 10px;
+  // display: flex;
+  // justify-content: start;
+  // align-items: flex-start;
+
+  // float: right;
+  // margin: 0 10px 0 0;
+  // background-color: blue;
+}
+.userMainClass{
+  width: 100%;
+}
+.image{
+  width: 100%;
+  height: 260px;
+  img{
+    height: 100%;
+  }
+}
+.menu{
+  // margin-top: 30px;
+  // border: 1px solid red;
+}

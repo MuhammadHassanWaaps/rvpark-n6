@@ -1,0 +1,24 @@
+<div class="vendor-header">
+  <div class="sanseriflf demibold heading">My RV Spots</div>
+  <div class="controls">
+    <div class="forward"> <img src="assets/svgs/back-slash.svg" /> </div>
+    <div class="previous"> <img src="assets/svgs/forward-slash.svg" /> </div>
+  </div>
+</div>
+
+<div class="full-container-689875">
+  <div *ngIf="park_data.length === 0">
+    <ion-item lines="none" (click)="addNewPark()">
+      <ion-label>
+        Please Add Your Parks Here
+      </ion-label>
+      <ion-button slot="end" fill="clear">Add New Park</ion-button>
+    </ion-item>
+  </div>
+
+  <swiper [config]="config" class="swiper-outer" #swiper style="background-color: white; padding: 10px;" *ngIf="park_data.length > 0">
+    <ng-template swiperSlide class="swiper-inner" *ngFor="let item of park_data">
+      <app-item-box-ph style="width: 100%" [item]="item" (click)="menuDetails(item)"></app-item-box-ph>
+    </ng-template>
+  </swiper>
+</div>

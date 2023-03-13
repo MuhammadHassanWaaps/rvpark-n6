@@ -1,0 +1,61 @@
+<ion-header>
+  <div class="b-header-output">
+    <div class="b-header-main">
+      <div class="menu-icon-outer">
+        <ion-buttons slot="start">
+          <ion-button (click)="closeModal()">
+            <ion-icon name="chevron-back-outline" color="dark"></ion-icon>
+
+          </ion-button>
+        </ion-buttons>
+        <h4 style="color: black;" class="sanseriflf demibold">Checkout</h4>
+      </div>
+      <div class="main-icon-outer"></div>
+      <img src="assets/images/notification.png" alt="" />
+    </div>
+  </div>
+</ion-header>
+<ion-content>
+  <app-cart-list-item></app-cart-list-item>
+  <div class="checkout" style="border-top: 2px solid #EBEBEB ; margin-top: 25px;">
+    <div class="checkout-price-main">
+      <!-- <div class="checkout-price">
+        <ion-text class="price-total poppins">TOTAL</ion-text>
+        <ion-text class="price-rate volvo"> $14.97 </ion-text>
+      </div> -->
+      <h1>Payment</h1>
+        <div class="paymentContainer">
+          <div class="payment">
+            <span class="paymentKey sanseriflf demibold">PRICE</span>
+            <span class="paymenyValue sanseriflf demibold">$ {{cartServ.total}}</span>
+          </div>
+          <div class="payment">
+            <span class="paymentKey sanseriflf demibold">FEES</span>
+            <span class="paymenyValue">$ {{  cartServ.net_total - cartServ.total }}</span>
+          </div>
+
+          <div class="payment">
+            <span class="paymentKey sanseriflf demibold">TOTAL</span>
+            <span class="paymenyValue">$ {{cartServ.net_total}} </span>
+          </div>
+
+        </div>
+
+        <ion-button (click)="openCheckout()" [disabled]="cartServ.net_total === 0" shape="round" color="primary" expand="block" class="checkout-button">
+          CHECKOUT
+        </ion-button>
+
+      <!-- <div class="checkoutDiv">
+
+        <ion-button (click)="openCheckout()" shape="round" color="" class="checkout-button"
+          style="margin-bottom: 25px; width: 333px; height: 46px;">
+          CHECKOUT
+        </ion-button>
+      </div> -->
+
+    </div>
+
+  </div>
+</ion-content>
+
+

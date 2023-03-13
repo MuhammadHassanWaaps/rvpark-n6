@@ -1,0 +1,46 @@
+<ion-content fullscreen="true" class="dark-background" [scrollY]="false">
+  <!-- [style.background-image]="'url('+ fullbackground +')'" -->
+  <!-- <div
+    class="fullbg"
+  ></div> -->
+  <img
+    class="fullbg"
+    [hidden]="!bgLoaded"
+    [src]="fullbackground"
+    (load)="updateBackgroundView()"
+  />
+  <img
+    class="fullbg"
+    [hidden]="!bgLoaded"
+    [src]="shade"
+    (load)="updateBackgroundView()"
+  />
+  <div class="center-div">
+    <img [src]="long_logo" [class.slide-in-bottom]="showLogButtons" />
+    <div class="button-div-outer slide-in-bottom" [hidden]="!showLogButtons">
+      <ion-button
+        class="login_button sanseriflf demibold"
+        shape="round"
+        (click)="navigate('login', 0)"
+        fill ='solid'
+        >LOGIN</ion-button
+      >
+      <ion-button
+        class=" signup sanseriflf demibold"
+        shape="round"
+        color="white"
+        fill ="outline"
+        (click)="navigate('login', 1)"
+        >SIGNUP</ion-button
+      >
+    </div>
+  </div>
+  <!-- <div class="overlay-image">
+    <img
+      class="ov-logo fade-in"
+      *ngIf="showLogo"
+      src="/assets/background.jpg"
+    />
+  </div> -->
+  <!-- <img [src]="" class="center-logo-image" /> -->
+</ion-content>

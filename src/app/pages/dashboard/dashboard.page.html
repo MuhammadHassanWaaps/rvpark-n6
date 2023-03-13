@@ -1,0 +1,15 @@
+<ion-header [class.curve-header]="users.role_id !== 2">
+  <!-- <ion-toolbar color="tertiary"> -->
+    <app-base-header ></app-base-header>
+  <!-- </ion-toolbar> -->
+  <!-- <ion-toolbar color="tertiary" [class.curve-toolbar]="activeIndexId != 1">
+    <ion-searchbar color="light" class="curve-searchbox"></ion-searchbar>
+  </ion-toolbar> -->
+</ion-header>
+<ion-content class="bottom-offset">
+  <ion-router-outlet></ion-router-outlet>
+  <app-home-switcher
+    (activeIndex)="activeIndex($event)"
+    class="page-switcher"
+  ></app-home-switcher>
+</ion-content>

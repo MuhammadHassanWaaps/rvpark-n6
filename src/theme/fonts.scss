@@ -1,0 +1,57 @@
+@font-face {
+  font-family: "Volvo";
+  src: url("./../assets/fonts/Volvo\ Broad\ Pro\ Digital.ttf");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  src: url("./../assets/fonts/Poppins-Regular.ttf");
+}
+
+@font-face {
+  font-family: "PoppinsMedium";
+  font-style: normal;
+  src: url("./../assets/fonts/Poppins-Medium.ttf");
+}
+
+@font-face {
+  font-family: "PoppinsSemibold";
+  font-style: normal;
+  src: url("./../assets/fonts/Poppins-SemiBold.ttf");
+}
+@font-face {
+  font-family: "SansSerifFLF";
+  font-style: normal;
+  src: url("./../assets/fonts/SansSerifFLF.ttf");
+}
+
+@font-face {
+  font-family: "SansSerifFLFDemibold";
+  font-style: normal;
+  src: url("./../assets/fonts/SansSerifFLF-Demibold.ttf");
+}
+
+.volvo {
+  font-family: "Volvo";
+}
+
+.poppins {
+  font-family: "Poppins";
+}
+
+.poppins.medium {
+  font-family: "PoppinsMedium";
+}
+
+.poppins.semibold {
+  font-family: "PoppinsSemibold";
+}
+
+.sanseriflf{
+  font-family: "SansSerifFLF";
+}
+
+.sanseriflf.demibold{
+  font-family: "SansSerifFLFDemibold";
+}

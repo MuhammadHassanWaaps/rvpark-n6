@@ -1,0 +1,15 @@
+.heading {
+    margin-left: 20px;
+}
+
+.body {
+    padding: 20px;
+    overflow: scroll;
+
+    .para {
+        text-align: justify;
+    }
+    ion-button{
+        width: 100%;
+    }
+}

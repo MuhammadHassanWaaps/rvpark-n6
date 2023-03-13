@@ -1,0 +1,36 @@
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <!-- <app-home-slider></app-home-slider> -->
+  <!-- <app-home-category-slider></app-home-category-slider> -->
+  <!-- <app-home-category-slider-boxes></app-home-category-slider-boxes> -->
+  <app-home-next-slider *ngIf="users.role_id !== 3"></app-home-next-slider>
+  <div class="full-container-689875"
+    *ngIf="users.role_id === 3"
+  >
+    <div *ngIf="obje76.length === 0">
+      <ion-item lines="none" (click)="addNewPark()">
+        <ion-label>
+          Please Add Your Parks Here
+        </ion-label>
+        <ion-button slot="end" fill="clear">Add New Park</ion-button>
+      </ion-item>
+    </div>
+  </div>
+  <!-- <app-cc-box-layout
+    *ngIf="role_id === '3'"
+    [heading]="'Booking RV Spots'"
+    [list]="[]"
+  ></app-cc-box-layout> -->
+  <app-cc-box-layout
+    *ngIf="users.role_id !== 3"
+    [heading]="'Featured listing'"
+    [list]="obje76"
+  ></app-cc-box-layout>
+  <app-cc-box-layout
+    [heading]="title"
+    [list]="obje76"
+  ></app-cc-box-layout>
+  <div style="width: 100%; height: 100px"></div>
+</ion-content>

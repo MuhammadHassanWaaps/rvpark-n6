@@ -1,0 +1,132 @@
+<form [formGroup]="aForm" *ngIf="step2">
+  <div class="sansSerifFLF demiBold login-component-mainheading">
+    Sign Up to RV Portal
+  </div>
+  <div class="poppins regular login-component-heading">
+    Add Your Details to Sign Up
+  </div>
+
+  <!-- <div class="radio">
+
+    <div class="radio1">
+      <input type="radio" id="huey" name="drone" value="huey" checked>
+      &nbsp;
+      <label for="huey" style="font-size: 16px;">RV Renters</label>
+    </div>
+
+    <div>
+      <input type="radio" id="dewey" name="drone" value="dewey">
+      &nbsp;
+      <label for="dewey" style="font-size: 16px;">For RV Park</label>
+    </div>
+
+  </div> -->
+
+  <div class="example">
+    <label class="radio-button">
+      <input
+        type="radio"
+        class="radio-button__input"
+        id="choice1-1"
+        name="choice1"
+      />
+      <span class="radio-button__control"></span>
+      <span
+        class="radio-button__label sanseriflf demibold"
+        style="font-size: 16px"
+        >For RV Park</span
+      >
+    </label>
+    <label class="radio-button">
+      <input
+        type="radio"
+        class="radio-button__input"
+        id="choice1-2"
+        name="choice1"
+      />
+      <span class="radio-button__control"></span>
+      <span
+        class="radio-button__label sanseriflf demibold"
+        style="font-size: 16px"
+        >RV Renters</span
+      >
+    </label>
+  </div>
+
+  <!-- <div class="radio">
+
+  <ion-radio-group value="custom-checked">
+    <ion-label>
+      <ion-radio value="custom"></ion-radio>
+      For RV Park
+    </ion-label>
+
+    <ion-label>
+      <ion-radio value="custom-checked"></ion-radio>
+      RV Renters
+    </ion-label>
+  </ion-radio-group>
+</div> -->
+
+  <div class="ibox-inputs signup">
+    <!-- <app-icon-input-box
+      [placeholder]="'Street Address'"
+      (inputChange)="inputChange($event, 'address')"
+    ></app-icon-input-box> -->
+    <app-icon-input-box
+      (inputChange)="inputChange($event, 'street_address')"
+      [rightIcon]="'caret-down-outline'"
+      [placeholder]="'Street Address'"
+    ></app-icon-input-box>
+    <app-icon-input-box
+      (inputChange)="inputChange($event, 'city')"
+      [rightIcon]="'caret-down-outline'"
+      [placeholder]="'Select City'"
+    ></app-icon-input-box>
+    <app-icon-input-box
+      (inputChange)="inputChange($event, 'province')"
+      [rightIcon]="'caret-down-outline'"
+      [placeholder]="'State'"
+    ></app-icon-input-box>
+    <app-icon-input-box
+      (inputChange)="inputChange($event, 'country')"
+      [placeholder]="'Select Country'"
+      [rightIcon]="'caret-down-outline'"
+    ></app-icon-input-box>
+  </div>
+  <div class="b-button-outer">
+    <ion-button
+      class="signup_button"
+      shape="round"
+      expand="block"
+      color=""
+      (click)="gotoDashboardEvent()"
+    >
+      NEXT
+    </ion-button>
+  </div>
+
+  <!-- <div class="dnt-div">
+    <div class="label-box-58">
+      <ion-text class="f-pop-li poppins" style="margin-right: 5px">
+        Already have an account?<br />
+      </ion-text>
+      <ion-text
+        class="sign1 f-pop-m poppins"
+        color="primary"
+        style="text-decoration: underline"
+        >Login</ion-text
+      >
+    </div>
+  </div> -->
+</form>
+
+<!-- <app-signup-slide3 *ngIf="step3" class="w-100"></app-signup-slide3> -->
+<!-- <div class="dnt-div">
+  <div class="label-box-58">
+    <ion-text class="f-pop-li poppins" style="margin-right: 5px; font-size: 13px;">
+      Already have an account?<br />
+    </ion-text>
+    <ion-text class="sign1 f-pop-m poppins" color="primary" style="text-decoration: underline;">Login</ion-text>
+  </div>
+</div> -->

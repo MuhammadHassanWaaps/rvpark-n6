@@ -1,0 +1,75 @@
+<ion-header>
+  <div class="b-header-output">
+    <div class="b-header-main">
+      <div class="menu-icon-outer">
+        <ion-buttons slot="start" (click)="back()">
+          <ion-button>
+            <ion-icon name="chevron-back-outline" color="dark"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+        <h4 style="color: black" class="sanseriflf demibold">Buy Spot</h4>
+      </div>
+      <!-- <div class="main-icon-outer"></div> -->
+    </div>
+  </div>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- <form> -->
+  <!-- <div class="menu-icon-outer">
+      <ion-buttons slot="start" (click)="goBack()">
+        <ion-button>
+          <ion-icon name="chevron-back-outline" color="dark"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <h4 style="color: black;" class="sanseriflf demibold">Add Spots</h4>
+    </div> -->
+  <div class="round-box inputs">
+    <ion-select
+      placeholder="Select Spot"
+      (ionChange)="getAvailableSpots($event)"
+    >
+      <ion-select-option color="primary" *ngFor="let item of availableDate_loop">{{
+        item.available_spot_date
+      }}</ion-select-option>
+    </ion-select>
+  </div>
+  <!-- <input type="text" class="cinput poppins" [(ngModel)]="spot_name" name="spot_name" [placeholder]="'spot name'" /> -->
+  <div class="round-box inputs">
+    <ion-select
+      placeholder="Select Spot"
+    >
+      <ion-select-option color="primary">Aladin</ion-select-option>
+    </ion-select>
+  </div>
+  <div class="most-input-outer">
+    <div class="round-box">
+      <div class="center-input-box">
+        <input
+          type="text"
+          class="cinput poppins"
+          [(ngModel)]="location"
+          name="location"
+          [placeholder]="'location'"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="most-input-outer">
+    <div class="round-box">
+      <div class="center-input-box">
+        <input
+          type="text"
+          class="cinput poppins"
+          [(ngModel)]="stock_price"
+          name="stock_price"
+          [placeholder]="'stock price'"
+        />
+      </div>
+    </div>
+  </div>
+
+  <ion-button>Buy Now</ion-button>
+  <!-- </ion-fab> -->
+  <!-- </form> -->
+</ion-content>

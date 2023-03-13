@@ -1,0 +1,34 @@
+<ion-content class="ion-padding">
+
+  <div (click)="goToChatRoom()" class="person-main" *ngFor="let item of [1,1,1,1,1,1,1]">
+    <div
+      class="left"
+      [style.background-image]="'url(assets/images/dropDown.png)'"
+    ></div>
+    <div class="right">
+      <div class="name">
+        <!-- <span class="n poppins" *ngIf="isSender">{{
+          room?.reciver_detail?.name
+        }}</span> -->
+        <span class="n poppins">Hassan</span>
+        <!-- <span class="n poppins" *ngIf="!isSender">{{
+          room?.sender_detail?.name
+        }}</span> -->
+
+        <!-- <span class="m">{{
+          room?.last_message
+            ? room?.last_message
+            : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus quasi distinctio blanditiis repudiandae, doloribus sunt autem velit amet magnam optio odit eius culpa vero suscipit aliquam iste iusto cum! Deserunt illo ipsa facere numquam dolore! Excepturi eveniet ullam eaque assumenda ab, deleniti, esse similique doloremque at blanditiis explicabo non."
+        }}</span> -->
+        <span class="m">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus quasi distinctio blanditiis repudiandae, doloribus sunt autem velit amet magnam optio odit eius culpa vero suscipit aliquam iste iusto cum! Deserunt illo ipsa facere numquam dolore! Excepturi eveniet ullam eaque assumenda ab, deleniti, esse similique doloremque at blanditiis explicabo non."
+        </span>
+      </div>
+      <div class="message">
+        <span class="time poppins medium">20:00</span>
+        <!-- <span class="m-number poppins">1</span> -->
+      </div>
+    </div>
+  </div>
+
+      </ion-content>

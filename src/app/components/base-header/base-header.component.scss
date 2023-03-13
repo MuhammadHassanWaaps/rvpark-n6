@@ -1,0 +1,116 @@
+.b-header-output {
+  display: block;
+  width: 100%;
+}
+
+.b-header-main {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  // height: 50px;
+  justify-content: space-between;
+  padding: 16px 16px;
+  align-items: center;
+  // background-color: aqua;
+}
+
+.menu-icon-outer {
+  position: relative;
+  //   width: 50px;
+  // height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .menu76 {
+    margin-right: 16px;
+  }
+}
+
+.shop-icon-outer {
+  position: relative;
+  //   width: 50px;
+  // height: 50px;
+  display: block;
+  margin-right: 8px;
+}
+
+.bell-icon-outer {
+  // background-color: aliceblue;
+  border-radius: 100%;
+  // position: relative;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.combined-icons {
+  // width: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 21px;
+}
+
+.curve-searchbox {
+  width: 100%;
+  // background-color: aqua;
+}
+
+.searchbar {
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.07));
+  height: 39px;  
+  width: calc(100% - 20px);
+  background-color: white;
+  border-radius: 27px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  .search-icon-outer{
+    padding: 0 7px 0 15px
+  }
+
+  .search-icon{
+    
+  }
+
+  .title-box{
+    .large-title{
+      font-size: 14px;
+    }
+    .small-title{
+      font-size: 8px;
+      color: #9e9e9e
+    }
+  }
+
+
+  // filter: drop-shadow(0 0 0.75rem rgb(228, 226, 226));
+  // display: flex;
+  // // justify-content: space-between;
+  // align-items: center;
+  // padding-left: 20px;
+}
+
+.Vender-Header{
+  width: calc(100% - 61px);
+  padding-left: 10px;
+}
+.Vender-Header p{
+  padding: 0;
+  margin: 0;
+}
+.iam{
+  font-size: 16px;
+  color: #167206;
+}
+.name
+{
+  font-size: 24px;
+
+}

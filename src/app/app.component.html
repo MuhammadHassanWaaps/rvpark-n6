@@ -1,0 +1,61 @@
+<ion-app>
+
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay" class="sidebarContainer">
+      <ion-content class="sidebarContainer">
+        <!-- work here -->
+
+        <!-- <div class="profileContainer">
+          <img src="assets/images/profilePic.png" alt="profile-picture" />
+          <p class="name">John Smith</p>
+          <ion-button class="joinButton" shape="round">LOGIN NOW</ion-button>
+        </div> -->
+        <div>
+          <ul>
+            <li (click)="gotoHome()"><img src="assets/images/home_icon.png"
+                alt="home_icon" height="20px">
+              <ion-button class="sideBarButtons" expand="full">HOME</ion-button>
+            </li>
+            <!-- <li (click)="gotoExplore()">
+              <img src="assets/images/search_icon.png"
+                  alt="home_icon"><ion-button class="sideBarButtons" expand="full">EXPLORE</ion-button>
+            </li> -->
+            <li (click)="gotoCart()" [hidden]="users.role_id !== 2">
+              <img src="assets/images/cart_icon.png"
+                alt="home_icon">
+              <ion-button class="sideBarButtons"
+                expand="full">CART</ion-button>
+            </li>
+            <li (click)="gotoPrivacyPolicy()">
+              <img src="assets/images/privacy_policy_icon.png"
+                alt="home_icon">
+              <ion-button class="sideBarButtons"
+                expand="full">PRIVACY POLICY</ion-button>
+            </li>
+            <li (click)="gotoTransection()">
+              <img src="assets/images/privacy_policy_icon.png"
+                alt="home_icon">
+              <ion-button class="sideBarButtons"
+                expand="full">Transaction</ion-button>
+            </li>
+            <li (click)="openOrderHistory()">
+              <img src="assets/images/privacy_policy_icon.png"
+                alt="home_icon">
+              <ion-button class="sideBarButtons"
+                expand="full">Owner History</ion-button>
+            </li>
+            <li (click)="logout()" style="margin-top: 46px;
+              background-color:#166A08;">
+              <img src="assets/images/logout_icon.png"
+                alt="home_icon"><ion-button class="sideBarButtons"
+                expand="full">LOGOUT</ion-button>
+            </li>
+          </ul>
+        </div>
+
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+
+</ion-app>

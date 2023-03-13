@@ -1,0 +1,32 @@
+ion-card{
+    height: 220px;
+    border: 2px solid green;
+}
+ion-card-title{
+    font-size: 21px;
+}
+
+.inner-box
+{
+    height: 40px;
+    width: 80px;
+    background-color: aquamarine;
+}
+.inner-card
+{
+    height: 100px;
+    background-color: aqua;
+}
+h4{
+    color: black;
+    font-weight: 700;
+    span{
+        color:gray;
+        font-weight: 400;
+    }
+}
+.list{
+    // border: 1px solid red;
+    overflow-y: scroll;
+    height: 100px;
+}

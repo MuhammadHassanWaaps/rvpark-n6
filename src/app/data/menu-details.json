@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Menu Details"
+  },
+  {
+    "img": "assets/images/home/square-images/main-menu-img.png",
+    "title": "CHILE CON QUESO & CHIPS",
+    "desc": " Our homemade chile con queso topped with pico de gallo & queso fresco sadas",
+    "type": [
+      {
+        "name": "Regular",
+        "prize": "$8.99"
+      },
+      {
+        "name": "Large",
+        "prize": "$8.99"
+      }
+    ]
+  }
+]

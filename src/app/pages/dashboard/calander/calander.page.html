@@ -1,0 +1,28 @@
+<!-- <mbsc-page style="color:#167206">
+  <div class="md-mobile-picker-inline">
+    <mbsc-datepicker
+      [controls]="['calendar']"
+      display="inline"
+      select="range"
+      [showRangeLabels]="true"
+      [minRange]="7"
+      [maxRange]="7"
+      (onChange)="effect($event)"
+      >
+
+    </mbsc-datepicker>
+  </div>
+</mbsc-page> -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Calendar</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-calendar [(ngModel)]="dateRange"
+    [options]="optionsRange"
+    [type]="'moment'"
+    [format]="'YYYY-MM-DD'">
+  </ion-calendar>
+</ion-content>

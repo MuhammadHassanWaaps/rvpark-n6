@@ -1,0 +1,5 @@
+<div class="menu-list-items-outer">
+  <div class="menu-list-item" *ngFor="let item of list">
+    <app-cart-item style="width: 100%" [item]="item" (delete)="deleteItem(item)"></app-cart-item>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="home-category-slider-box-outer">
+  <div class="category-slider-outer">
+    <div class="heading volvo">
+      Our Taco Shops
+      <img class="b-5257575" src="assets/images/icons/location.svg" />
+    </div>
+    <swiper [config]="config" class="swiper-outer" #swiper>
+      <ng-template
+        swiperSlide
+        class="swiper-inner"
+        *ngFor="let item of slides"
+        (click)="menuDetails()"
+      >
+        <div class="item-box-outer">
+          <div class="image-box">
+            <!-- [style.background]="'url(' + item.image + ')'" -->
+            <img [src]="item.image" />
+          </div>
+          <div class="text-box">
+            <div class="top-heading poppins semibold">{{ item.heading }}</div>
+            <div class="loc-heading poppins">
+              <ion-icon [src]="'assets/svgs/location.svg'"></ion-icon
+              >{{ item.location }}
+            </div>
+            <div class="phn-heading poppins semibold">
+              <ion-icon [src]="'assets/svgs/phone.svg'"></ion-icon
+              >{{ item.phone }}
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </swiper>
+  </div>
+</div>

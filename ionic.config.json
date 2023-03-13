@@ -1,0 +1,7 @@
+{
+  "name": "KJ RV Portal",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

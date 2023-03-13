@@ -1,0 +1,36 @@
+<div class="b-header-output">
+  <div class="b-header-main">
+    <div class="menu-icon-outer" (click)="menuToggle()">
+      <img class="menu76" src="assets/images/hamburger.png" />
+    </div>
+    <!-- <ion-menu-button></ion-menu-button> -->
+    <!-- <div class="main-icon-outer"></div> -->
+    <!-- <ion-searchbar color="light" class="curve-searchbox" placeholder="Where to? Search location"></ion-searchbar> -->
+    <div class="searchbar" *ngIf="users.role_id === 2" (click)="openSC()">
+      <div class="search-icon-outer">
+        <img class="search-icon" src="assets/svgs/search-icon.svg" />
+      </div>
+
+      <div class="title-box">
+        <div class="large-title sanseriflf demibold">{{title}}</div>
+        <div class="small-title">{{subtitle}}</div>
+      </div>
+      <!-- <img src= "assets/images/explore.png" style="margin-left:10px;"/> -->
+    </div>
+
+    <div class="Vender-Header" *ngIf="users.role_id !== 2">
+      <p class="sanseriflf demibold iam">I am</p>
+      <p class="sanseriflf demibold name">{{users.user?.name}}</p>
+    </div>
+
+    <div class="bell-icon-outer" (click)="showNotificaitons()">
+      <img src="assets/images/notification.png" height="30" width="30" />
+    </div>
+
+    <!-- <div class="combined-icons">
+      <div class="shop-icon-outer" (click)="addToCart()">
+      </div>
+
+    </div> -->
+  </div>
+</div>

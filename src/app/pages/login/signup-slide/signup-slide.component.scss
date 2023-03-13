@@ -1,0 +1,228 @@
+.ibox-inputs.signup {
+  display: flex;
+  flex-direction: column;
+  margin-top: 46px;
+  app-icon-input-box {
+    flex: 1;
+    padding: 10px 0;
+  }
+}
+
+.login-component-mainheading {
+  font-size: 28px;
+  margin-top: 60px;
+  margin-bottom: 7px;
+}
+.login-component-heading {
+  font-size: 14px;
+  margin-bottom: 23px;
+  color: #808080;
+}
+.fp-box-outer {
+  height: 40px;
+  width: 100%;
+  //   background: yellow;
+  position: relative;
+  .fp-link {
+    color: var(--ion-color-primary);
+    border-bottom: 1px solid var(--ion-color-primary);
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+  }
+}
+.b-button-outer {
+  width: 100%;
+  margin-top: 21px;
+  margin-bottom: 34px;
+}
+.or-div {
+  font-size: 18px;
+}
+.cont-div {
+  font-size: 14px;
+  margin-top: 15px;
+  margin-bottom: 22px;
+}
+
+.dnt-div {
+  margin-top: 100px;
+}
+
+.f-pop-li {
+  color: #000000;
+  font-size: 13px;
+}
+
+.f-pop-m {
+  font-size: 13px;
+}
+
+.label-box-58 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+// .radio{
+//   // background-color: #808080;
+//   // display: flex;
+//   // justify-content: space-around;
+//   // flex-direction: row;
+//   // width: 100%;
+//   // height: 50px;
+
+// }
+
+// ioon chek
+// ion-radio {
+//   width: 16px;
+//   height: 16px;
+// }
+
+// ion-radio::part(container) {
+//   border-radius: 100%;
+//   border: 2px solid green;
+// }
+
+// ion-radio::part(mark) {
+//   background: none;
+//   transition: none;
+//   transform: none;
+//   border-radius: 0;
+// }
+
+// ion-radio.radio-checked::part(container) {
+//   background: green;
+//   border-color: transparent;
+// }
+
+// ion-radio.radio-checked::part(mark) {
+//   width: 6px;
+//   height: 10px;
+
+//   border-width: 0px 2px 2px 0px;
+//   border-style: solid;
+//   border-color: #fff;
+
+//   transform: rotate(45deg);
+// }
+
+.radio{
+  width: 100%;
+  height: 50px;
+  // background-color: blue;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+
+input[type='radio']:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: white;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid green;
+}
+
+input[type='radio']:checked:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 25px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: green;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
+}
+
+.signup_button{
+  --background:green;
+}
+
+.sign1{
+  color: green;
+
+}
+
+
+html {
+  font-family: Arial;
+}
+
+
+.radio-button {
+  cursor: pointer;
+  padding-right: 25px;
+}
+input[type=radio] {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+input {
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 11px 23px;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 0;
+    outline: 0;
+    background-color: transparent;
+}
+
+.radio-button__input {
+    opacity: 0;
+    position: absolute;
+}
+
+.radio-button__control {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 7px;
+    vertical-align: middle;
+    background-color: inherit;
+    color: #017b5f;
+    border: 2px solid #666;
+    border-radius: 24px;
+}
+
+.radio-button__input:checked+.radio-button__control:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 10px;
+    height: 10px;
+    background-color: green;
+    border-radius: 12px;
+}
+
+.radio-button__input:checked+.radio-button__control {
+    border-color: green;
+}
+
+.radio-button__control {
+  transform: scale(0.75);
+}
+.example
+{ 
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

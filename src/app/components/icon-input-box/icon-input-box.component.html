@@ -1,0 +1,32 @@
+<div class="most-input-outer">
+  <div class="round-box">
+    <div class="left-icon-box" [hidden]="!leftIcon">
+      <ion-icon class="licon" [name]="leftIcon" [color]="color"></ion-icon>
+    </div>
+    <div class="center-input-box">
+      <input (keyup)="inputChangeFire($event)" *ngIf="type != 'ion-datetime'"
+        [readOnly]="readonly"
+        class="cinput poppins"
+        [placeholder]="placeholder"
+        [type]="type == 'password' && togglePassword ? 'text' : type"
+        [value]="value"
+        (onchange)="changeEvent($event)"
+      />
+
+      <!-- <ion-item>
+        <ion-datetime *ngIf="type == 'ion-datetime'"></ion-datetime>
+      </ion-item> -->
+      
+
+    </div>
+    <div class="right-icon-box">
+      <ion-icon
+        (click)="showPassword()"
+        class="ricon"
+        [name]="rightIcon"
+        [color]="color"
+        (click)="lefticonClick()"
+      ></ion-icon>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+.states {
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.b-header-output {
+    display: block;
+    width: 100%;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.b-header-main {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    padding: 16px 16px;
+    align-items: center;
+}
+
+.menu-icon-outer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .menu76 {
+      margin-right: 16px;
+    }
+  }

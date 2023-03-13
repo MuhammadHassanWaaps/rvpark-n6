@@ -1,0 +1,31 @@
+[
+  {
+    "id": 1,
+    "image": "assets/images/fl1.png",
+    "heading": "Wild caught mahi mahi",
+    "subheading": "World of Outlaws",
+    "class": true,
+    "active": 1
+  },
+  {
+    "id": 2,
+    "image": "assets/images/fl2.png",
+    "heading": "Sourced Fresh Produce",
+    "subheading": "Fascinating around the world",
+    "active": 0
+  },
+  {
+    "id": 3,
+    "image": "assets/images/fl3.png",
+    "heading": "Locally Made Tortillas",
+    "subheading": "Join our next event !!",
+    "active": 0
+  },
+  {
+    "id": 4,
+    "image": "assets/images/fl4.png",
+    "heading": "Locally Made Tortillas",
+    "subheading": "World of Outlaws",
+    "active": 0
+  }
+]

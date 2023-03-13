@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Shipping Address",
+    "name": "John Smith",
+    "line1": "No 123, Sub Street,",
+    "line2": "Main Street,",
+    "line3": "City Name, Province, Country",
+    "icon": "assets/images/icons/edit-icon.svg"
+  },
+  {
+    "title": "Payment Method",
+    "card_name": "Master Card **49",
+    "img": "assets/images/icons/card-icon.svg",
+    "icon": "assets/images/icons/drop-icon.svg"
+  },
+  {
+    "title": "Total",
+    "total_price": "$14.97"
+  }
+]

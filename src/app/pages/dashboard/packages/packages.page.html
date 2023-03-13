@@ -1,0 +1,59 @@
+<ion-header>
+  <div class="b-header-output">
+    <div class="b-header-main">
+      <div class="menu-icon-outer">
+        <ion-buttons slot="start" (click)="back()">
+          <ion-button>
+            <ion-icon name="chevron-back-outline" color="dark"></ion-icon>
+          </ion-button>
+          <h4 style="color: black" class="sanseriflf demibold">Packages</h4>
+        </ion-buttons>
+      </div>
+    </div>
+  </div>
+</ion-header>
+<ion-content>
+  <ion-item>
+    <ion-chip
+  >
+    {{ aitem['available_spot_date'] | date: 'Y-MM-dd' }}
+  </ion-chip>
+    <ion-label>
+{{ item.spot_name }},{{ item.spot_location }}
+    </ion-label>
+    <ion-button>
+    <ion-icon name="cart-outline"></ion-icon
+  ></ion-button>
+  </ion-item>
+  <div class="Pack-box">
+    <ion-item (click)="click1()">
+      <ion-label> Daily $50</ion-label>
+      <ion-checkbox slot="start"></ion-checkbox>
+    </ion-item>
+    <ion-item (click)="click2()">
+      <ion-label> Weekly $250</ion-label>
+      <ion-checkbox slot="start"></ion-checkbox>
+    </ion-item>
+    <ion-item (click)="click3()">
+      <ion-label> Monthly $900</ion-label>
+      <ion-checkbox slot="start"></ion-checkbox>
+    </ion-item>
+    <!-- <ion-card [class.card2]="!select2" [class.card1]="select2">
+      <ion-card-header>
+        <ion-card-title>Weekly</ion-card-title>
+      </ion-card-header>
+      <ion-card-content> $250 </ion-card-content>
+    </ion-card> -->
+    <!-- <ion-card
+      [class.card2]="!select3"
+      [class.card1]="select3"
+      (click)="click3()"
+    >
+      <ion-card-header>
+        <ion-card-title>Monthly</ion-card-title>
+      </ion-card-header>
+      <ion-card-content> $900 </ion-card-content>
+    </ion-card> -->
+    <ion-button>Add to Cart</ion-button>
+  </div>
+</ion-content>

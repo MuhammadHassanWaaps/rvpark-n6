@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="88" height="88" viewBox="0 0 88 88">
+  <g id="Group_943" data-name="Group 943" transform="translate(-37 -725)">
+    <g id="Rectangle_532" data-name="Rectangle 532" transform="translate(37 725)" fill="#fff" stroke="#dfdfdf" stroke-width="1" stroke-dasharray="2">
+      <rect width="88" height="88" rx="10" stroke="none"/>
+      <rect x="0.5" y="0.5" width="87" height="87" rx="9.5" fill="none"/>
+    </g>
+    <path id="Icon_open-plus" data-name="Icon open-plus" d="M13.5,0V13.5H0v9H13.5V36h9V22.5H36v-9H22.5V0Z" transform="translate(63.5 751.5)" fill="#dfdfdf" stroke="#fff" stroke-linecap="round" stroke-width="7"/>
+  </g>
+</svg>

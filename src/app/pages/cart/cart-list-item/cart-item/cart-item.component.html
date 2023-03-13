@@ -1,0 +1,47 @@
+<ion-spinner class="center-spinner" *ngIf="loading"></ion-spinner>
+<div class="c123" *ngIf="!loading">
+  <div>
+    <div class="image-outer-box" [style.background]="'url(' + getItemImage(item) + ')'">
+
+    </div>
+  </div>
+  <div></div>
+
+  <div class="text-box-outer">
+    <div class="text-box-inner">
+      <div class="name sanseriflf demibold">
+        {{ item?.park?.name }}
+      </div>
+      <div class="price-line-544">
+        <div class="con1">
+          <div class="pl-box-255 sanseriflf" style="color: green;">Plot: {{item?.spot_address }}</div>
+        </div>
+        <div class="pl-box-256 sanseriflf demibold">${{item.package_price}}/{{item.package}} - ${{item?.price}}</div>
+        <div class="pl-box-256  "
+          style="margin-top:5px;display: flex;justify-content: baseline; width: 150px; color:green">
+          <!-- <img src="assets/images/locationIcon.png" alt="" height="10" width="8"> &nbsp; -->
+          <div style="margin-left: 4px; text-align: left;">
+            {{item?.spot?.spot_name}} {{item?.spot_address}} <br>
+            {{item?.available_start_date | date: 'yyyy-MM-dd'}} - 
+            {{item?.available_end_date | date: 'yyyy-MM-dd'}}
+          </div>          
+        </div>
+      </div>
+      <div>
+
+      </div>
+      <!-- <div class="price-line-544">
+        <div class="pl-box-255 poppins medium">Large</div>
+        <div class="pl-box-256 poppins medium">$8.99</div>
+      </div> -->
+    </div>
+    <div class="quantity-outer">
+      <img src="assets/icons/Icon material-delete.png" (click)="deleteItem()" />
+      <!-- <div class="quantity-main">
+        <div (click)="increment()">+</div>
+        <div class="quantity">{{ qty }}</div>
+        <div (click)="decrement()">-</div>
+      </div> -->
+    </div>
+  </div>
+</div>

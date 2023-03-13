@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "735046464379",
+    "project_id": "rv-park-e1f7e",
+    "storage_bucket": "rv-park-e1f7e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:735046464379:android:dab39d23b3542b6da043de",
+        "android_client_info": {
+          "package_name": "com.rvpark.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "735046464379-i21triidq2q8s9j9jijnor8ttti0efea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAGfjybIPXZBsknysYvMHHFpadjBt6Vs0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "735046464379-i21triidq2q8s9j9jijnor8ttti0efea.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

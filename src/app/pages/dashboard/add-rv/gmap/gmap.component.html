@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <!-- (click)="closeModal({data: 'A'})" -->
+      <ion-button (click)="goBack()"
+      >
+        <ion-icon name="arrow-back" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Map Place</ion-title>
+    <ion-buttons slot="end">
+      <ion-button
+      *ngIf="!isDirections" (click)="getMarkerLocation()"
+       >
+
+      </ion-button>
+      <ion-button
+      *ngIf="isBothDirectionsAvailable" (click)="getDirection()"
+      >
+        <ion-icon name="navigate"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="ion-no-bounce">
+  <div #map id="map"></div>
+</ion-content>

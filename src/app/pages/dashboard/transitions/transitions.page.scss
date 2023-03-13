@@ -1,0 +1,116 @@
+.header-row-254646{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #167206;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 7px;
+    height: 40px;
+    margin-bottom: 14px;
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.04));
+    z-index: -1;
+
+
+    .p-item-687{
+        font-size: 12px;
+        width: 20%;
+        overflow: hidden;
+        text-align: center;
+    }
+}
+
+.bg-w-698675{
+    background: #ffffff;
+    color: #8E8E8E;
+    border: 1px solid #f1f1f1;
+    z-index: -1;
+    .p-item-687{
+        font-size: 10px;
+    }
+
+}
+.login-component-mainheading {
+  font-size: 28px;
+  margin-bottom: 7px;
+  margin-top: 60px;
+}
+.login-component-heading {
+  font-size: 14px;
+  margin-bottom: 36px;
+  color: #808080;
+  font-weight: lighter;
+}
+.fp-box-outer {
+  height: 40px;
+  width: 100%;
+  //   background: yellow;
+  position: relative;
+  .fp-link {
+    color: var(--ion-color-primary);
+    border-bottom: 1px solid var(--ion-color-primary);
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+  }
+}
+.b-button-outer {
+  width: 100%;
+  margin-top: 21px;
+  margin-bottom: 34px;
+}
+.or-div {
+  font-size: 18px;
+}
+.cont-div {
+  font-size: 14px;
+  margin-top: 15px;
+  margin-bottom: 22px;
+}
+
+.dnt-div {
+  margin-top: 100px;
+}
+
+.f-pop-li {
+  color: #000000;
+  font-size: 13px;
+}
+
+.f-pop-m {
+  font-size: 13px;
+}
+
+.label-box-58 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.ibox-inputs{
+ margin-top: 36px;
+}
+
+.login_button{
+  --background: green;
+}
+
+.cancel_button{
+  --background: red;
+}
+
+.signup_button{
+  --background : rgb(2, 97, 2);
+}
+.card{
+  z-index: 10;
+}
+
+
+

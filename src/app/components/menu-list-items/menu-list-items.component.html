@@ -1,0 +1,23 @@
+<div class="menu-list-items-outer">
+  <div class="menu-list-item" *ngFor="let item of list">
+    <div
+      class="image-outer-box"
+      [style.background]="'url(' + item.url + ')'"
+    ></div>
+    <div class="text-box-outer">
+      <div class="text-box-inner">
+        <div class="heading-544 poppins semibold">
+          {{ item.name }}
+        </div>
+        <div class="price-line-544">
+          <div class="pl-box-255 poppins medium">Regular</div>
+          <div class="pl-box-256 poppins medium">{{ item.regular }}</div>
+        </div>
+        <div class="price-line-544">
+          <div class="pl-box-255 poppins medium">Large</div>
+          <div class="pl-box-256 poppins medium">{{ item.Large }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

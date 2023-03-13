@@ -1,0 +1,14 @@
+<div class="menu-box-outer">
+  <div class="menu-box-items">
+    <div
+      class="box-item"
+      *ngFor="let item of (users.role_id === 3) ? this.menulistVendor : this.menulistUser"
+      (click)="makeActive(item)"
+    >
+      <img [src]="item.active ? item.icon_active : item.icon" />
+      <ion-text class="poppins" [class.active]="item.active == 1">{{
+        item.label
+      }}</ion-text>
+    </div>
+  </div>
+</div>

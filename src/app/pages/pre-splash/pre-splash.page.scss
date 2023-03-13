@@ -1,0 +1,22 @@
+.full-page-splash{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0
+}
+
+.bottom-trees{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);    
+}
+
+
+.center-logo{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);    
+}

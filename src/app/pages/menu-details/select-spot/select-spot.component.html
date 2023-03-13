@@ -1,0 +1,94 @@
+<ion-header>
+  <div class="b-header-output">
+    <div class="b-header-main">
+      <div class="menu-icon-outer">
+        <ion-buttons slot="start" (click)="back()">
+          <ion-button>
+            <ion-icon name="chevron-back-outline" color="dark"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+        <h4 style="color: black; margin-top: -22px; margin-left: 35px;"
+          class="sanseriflf demibold">Spot</h4>
+      </div>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <div>
+    <ion-label class="head" >
+      Spot Name: <span style="color: #167206;">{{item['spot_name']}}</span>
+    </ion-label>
+    <br>
+    <ion-label class="head" >
+      Spot Location: <span style="color: #167206;">{{item['spot_location']}}</span> 
+    </ion-label>
+  </div>
+  <div class="round-box inputs">
+    <ion-select placeholder="Select Type" [(ngModel)]="ctype" (ionChange)="ctyleChange($event)">
+      <ion-select-option value="daily">Daily</ion-select-option>
+      <ion-select-option value="weekly">Weekly</ion-select-option>
+      <ion-select-option value="monthly">Monthly</ion-select-option>
+    </ion-select>
+  </div>
+
+    <ion-label class="date-head">Available Dates:</ion-label>
+    <ion-calendar *ngIf="expression" class="calender-outline" [(ngModel)]="dateRange"
+      [options]="optionsRange"
+      [type]="'moment'"
+      (change)="getSetDates($event)"
+      [format]="'YYYY-MM-DD'">
+    </ion-calendar>
+    <!-- <div class="datebox" >
+      <h2 class="date">
+        <span *ngIf="getAllAvailableDates.length == 0">No Available Dates</span>
+        <ion-chip *ngFor="let item of getAllAvailableDates" [color]="checkIfDateBooked(item)">
+          {{item}}
+        </ion-chip>
+      </h2>
+    </div> -->
+    <h6 class="head">Select Package</h6>
+    <div class="round-box input"  *ngFor="let dat of item['available_date']">
+      <ion-select placeholder="Select Package" name="radio-group"
+      [(ngModel)]="packageType"
+      (ionChange)="changePackage($event)">
+        <ion-select-option value="Daily" *ngIf="dat.daily_price != null">Daily ${{dat.daily_price}}</ion-select-option>
+        <ion-select-option value="Weekly" *ngIf="dat.weekly_price != null">Weekly ${{dat.weekly_price}}</ion-select-option>
+        <ion-select-option value="Monthly" *ngIf="dat.monthly_price != null">Monthly ${{dat.monthly_price}}</ion-select-option>
+      </ion-select>
+    </div>
+    <div class="most-input-outer-date">
+      <h6 class="head">Start Date</h6>
+      <div class="round-box">
+        <ion-list class="date">
+          <input readonly id="start" [(ngModel)]="startdate" style="
+            margin-top: 10px;
+            border: none;"
+            
+            type="text" placeholder="Start-Date"
+            />
+            <!-- (change)="dateChange($event)" -->
+            <!-- onfocus="(this.type='date')" -->
+        </ion-list>
+      </div>
+    </div>
+    <div class="most-input-outer-date2">
+      <h6 class="head">End Date</h6>
+      <div class="round-box">
+        <ion-list class="date">
+          <input readonly id="start" [(ngModel)]="enddate" style="
+            margin-top: 10px;
+            border: none;"
+            type="text" placeholder="End-Date"
+            readonly="true"
+            />
+            <!-- onfocus="(this.type='date')" -->
+        </ion-list>
+      </div>
+    </div>
+    <ion-button expand="block" (click)="checkMyItemSelected()" class="btn" [disabled]="!startdate || !enddate || !packageType">
+      <ion-icon name="cart-outline"></ion-icon>
+    </ion-button>
+  </div>
+</ion-content>

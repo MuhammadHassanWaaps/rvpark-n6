@@ -1,0 +1,42 @@
+.Pack-box {
+  height: auto;
+  width: 100%;
+
+  .card1 {
+    background-color: #167206;
+    color: white;
+    text-align: center;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 11%), 0 2px 2px rgb(0 0 0 / 11%), 0 4px 4px rgb(0 0 0 / 11%), 0 8px 8px rgb(0 0 0 / 11%), 0 16px 16px rgb(0 0 0 / 11%), 0 32px 32px rgb(0 0 0 / 11%)  !important;
+
+    border-radius: 4px;
+
+    ion-card-title {
+      color: white;
+      font-weight: 100;
+    }
+
+  }
+
+  .card2 {
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 11%), 0 2px 2px rgb(0 0 0 / 11%), 0 4px 4px rgb(0 0 0 / 11%), 0 8px 8px rgb(0 0 0 / 11%), 0 16px 16px rgb(0 0 0 / 11%), 0 32px 32px rgb(0 0 0 / 11%)  !important;
+    background-color: #E7E9EB;
+
+    // box-shadow: 0 1px 1px rgb(0 0 0 / 11%), 0 2px 2px rgb(0 0 0 / 11%), 0 4px 4px rgb(0 0 0 / 11%), 0 8px 8px rgb(0 0 0 / 11%), 0 16px 16px rgb(0 0 0 / 11%), 0 32px 32px rgb(0 0 0 / 11%)  !important;
+  }
+
+  .card3 {
+    text-align: center;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 11%), 0 2px 2px rgb(0 0 0 / 11%), 0 4px 4px rgb(0 0 0 / 11%), 0 8px 8px rgb(0 0 0 / 11%), 0 16px 16px rgb(0 0 0 / 11%), 0 32px 32px rgb(0 0 0 / 11%)  !important;
+    // box-shadow: 0 1px 1px rgb(0 0 0 / 25%), 0 2px 2px rgb(0 0 0 / 20%), 0 4px 4px rgb(0 0 0 / 25%), 0 8px 8px rgb(0 0 0 / 25%), 0 16px 16px rgb(0 0 0 / 25%) !important;
+    background-color: #E7E9EB;
+    border-radius: 4px;
+  }
+
+  ion-button {
+    color: white;
+    width: 40vh;
+    margin-left: 27px;
+  }
+}

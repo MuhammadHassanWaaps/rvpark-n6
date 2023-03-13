@@ -1,0 +1,17 @@
+<div class="item-main">
+  <div class="item">
+    <!-- <div class="image-box" [style.background]="'url( ' + image_url + ')'"></div> -->
+    <img
+      class="image-box"
+      [src]="image_url ? image_url : 'assets/images/fl1.png'"
+    />
+
+    <div class="content-outer">
+      <div class="heading sanseriflf demibold">{{item.name}}</div>
+      <div class="subheading">
+        <img class="mg-79676" src="assets/images/locationIcon.png" />
+        <div class="nd-96797 poppins">{{item.city}},{{item.country}}</div>
+      </div>
+    </div>
+  </div>
+</div>

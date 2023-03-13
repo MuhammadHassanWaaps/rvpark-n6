@@ -1,0 +1,14 @@
+
+  <div class="flex">
+    <div class="card" *ngFor="let url of images; let i = index">
+      <ion-icon class="close-icon" *ngIf="images.length > 0" name="close-outline" (click)="removeImage(i)"></ion-icon>
+      <img [src]="url" height="200" />
+    </div>
+
+    <div class="add">
+      <label class="img-label" for="upload">
+        <ion-icon name="add-outline"></ion-icon>
+        <input type="file" (change)="onFileChange($event)" multiple hidden id="upload" />
+      </label>
+    </div>
+  </div>

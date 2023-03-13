@@ -1,0 +1,38 @@
+<ion-header class="ion-padding">
+  <div class="b-header-output">
+    <div class="b-header-main">
+      <div class="menu-icon-outer">
+        <ion-buttons slot="start">
+          <ion-button (click)="back()">
+            <ion-icon name="chevron-back-outline" color="dark"></ion-icon>
+            <h4 style="color: black" class="sanseriflf demibold">
+              Owner History
+            </h4>
+          </ion-button>
+        </ion-buttons>
+      </div>
+    </div>
+  </div>
+</ion-header>
+<ion-content>
+  <ion-card *ngFor="let item of orderitems" [hidden]="item.order_detail.order_items.length == 0">
+
+    <ion-card-header *ngFor="let order of item.order_detail.order_items">
+      <ion-card-title> <ion-chip>{{startDate(order.available_start_date)}}</ion-chip>
+        - <ion-chip>{{endDate(order.available_end_date)}}</ion-chip></ion-card-title>
+      <ion-card-subtitle style="color:green; margin-left: 9px;">{{order.package}} <ion-label style="float: right;">${{item.amount}}</ion-label></ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content *ngFor="let order of item.order_detail.order_items"
+      style="margin-left: 9px;">
+      
+      <h4>Park Name: <span>{{order.park.name}}</span></h4>
+
+      <ion-chip *ngFor="let spot of order.park.park_sopts"> {{spot.spot_name}}</ion-chip>      
+
+
+
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>

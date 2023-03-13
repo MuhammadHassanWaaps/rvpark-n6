@@ -1,0 +1,46 @@
+<ion-header>
+  <div class="b-header-output">
+    <div class="b-header-main">
+      <div class="menu-icon-outer">
+        <ion-buttons slot="start">
+          <ion-button (click)="back()">
+            <ion-icon name="chevron-back-outline" color="dark"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+        <h4 style="color: black;" class="sanseriflf demibold">
+          Select State & City
+        </h4>
+      </div>
+      <!-- <div class="main-icon-outer"></div> -->
+    </div>
+  </div>
+</ion-header>
+<ion-content>
+  <form [formGroup]="aForm">
+    <div class="states">
+      <div style="width: 100%; margin-top: 10px;">
+      <app-icon-input-box
+        [rightIcon]="'caret-down-outline'"
+        [readonly]="true"
+        [placeholder]="'State'"
+        (click)="openStates()"
+        [value]="this.aForm.controls['province'].value"
+        (inputChange)="inputChange($event, 'province')"></app-icon-input-box>
+    </div><div style="width: 100%; margin-top: 10px;">
+      <app-icon-input-box
+        style="width: 100%; margin-top: 10px;"
+        [rightIcon]="'caret-down-outline'"
+        [readonly]="true"
+        (click)="openCities()"
+        [placeholder]="'Select City'"
+        [value]="this.aForm.controls['city'].value"
+        (inputChange)="inputChange($event, 'city')"></app-icon-input-box>
+      </div>
+      <div style="width: 100%; margin-top: 20px;">
+        <ion-button class="login_button" expand="block" (click)="submit()">
+          <span>SUBMIT</span>
+        </ion-button>
+      </div>
+    </div>
+  </form>
+</ion-content>

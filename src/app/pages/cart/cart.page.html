@@ -1,0 +1,34 @@
+<ion-content>
+  <ion-list>
+    <ion-item *ngIf="loading">
+      <ion-label>
+        Loading cart ...
+      </ion-label>
+        <ion-spinner slot="end"></ion-spinner>
+    </ion-item>
+  </ion-list>
+
+  <ion-slides class="swiper-outer" #swiper *ngIf="!loading">
+    <ion-slide class="swiper-inner">
+      <app-cc-cart-slide
+        (toCheckout)="toCheckout(1)"
+        (toOut)="toOut(1)"
+      ></app-cc-cart-slide>
+    </ion-slide>
+    <!-- <ion-slide class="swiper-inner">
+      <app-cc-checkout-slide
+        (toCheckout)="toCheckout(2)"
+        (toOut)="toOut(2)"
+      ></app-cc-checkout-slide>
+    </ion-slide>
+    <ion-slide class="swiper-inner">
+      <app-cc-payment-slide
+        (toCheckout)="toCheckout(3)"
+        (toOut)="toOut(3)"
+      ></app-cc-payment-slide>
+    </ion-slide> -->
+    <ion-slide class="swiper-inner">
+      <app-cc-result-slide (toCheckout)="toCheckout(4)"></app-cc-result-slide>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

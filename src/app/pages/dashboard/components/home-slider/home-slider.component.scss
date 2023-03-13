@@ -1,0 +1,61 @@
+.home-slider-outer {
+  position: relative;
+}
+.main-slider {
+  padding: 20px;
+}
+
+.content-outer {
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 100%;
+  padding-top: 49.85%; /* w 335 h 167 ~ 0.4985  1:1 Aspect Ratio */
+  position: relative; /* If you want text inside of it */
+  border-radius: 20px;
+}
+.slider-cover-background {
+  background-position: center center !important;
+  background-size: cover !important;
+}
+.halfway-background {
+  height: 120px;
+  background: var(--ion-color-tertiary);
+  border-radius: 0 0 25px 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.shade-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+}
+.text-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+}
+.heading-2633 {
+  font-size: 28px;
+  color: #ffffff;
+}
+.subheading-2633 {
+  font-size: 9px;
+  color: #ffffff;
+}
+
+.set{
+  display: flex;
+  flex-direction: column;
+}

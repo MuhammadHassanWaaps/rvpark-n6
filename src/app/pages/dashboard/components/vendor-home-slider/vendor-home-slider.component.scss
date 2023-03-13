@@ -1,0 +1,56 @@
+
+.forward {
+    font-size: 30px;
+}
+
+.previous {
+    font-size: 30px;
+    // margin-right: 16px;
+}
+
+.controls {
+    width: 50px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.vendor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // background-color: #A1A1A1;
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+.vendor-header .heading {
+    font-size: 24px;
+    width: calc(100% - 100px);
+}
+
+.city {
+    display: flex;
+
+}
+
+.name {
+    display: flex;
+}
+
+.images {
+    width: 100%;
+    // background-color: red;
+}
+
+.swiper-inner {
+    background-color: aqua;
+    padding: 10px 0;
+    margin: 0;
+
+}
+
+
+.a123 {
+    padding:0 10px;
+}

@@ -1,0 +1,56 @@
+<!-- <app-base-header ></app-base-header> -->
+<div>
+
+</div>
+<ion-content class="ion-padding">
+  <div class="chat-box">
+    <div class="time-details">
+      <div class="top-image">
+        <img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </div>
+      <span class="poppins"> March 28,2018 11:50</span>
+    </div>
+    <div class="line"></div>
+    <div class="chat-mid" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+      <div class="message-box-outer">
+        <div class="text-message">
+          <!-- <div class="text poppins" *ngIf="item.user_id == currentUser.id">
+            {{ item?.message }}
+          </div> -->
+          <div class="text poppins">
+            <!-- {{ item?.message }} -->
+            user 4
+          </div>
+          <!-- <div class="mtime poppins" *ngIf="item.user_id == currentUser.id">
+            {{ item?.created_at | date:'mediumTime'}}
+          </div> -->
+          <div class="mtime poppins">
+            <!-- {{ item?.created_at | date:'mediumTime'}} -->
+            20:00
+          </div>
+        </div>
+        <div class="text-message2">
+          <!-- <div class="text poppins" *ngIf="item.user_id != currentUser.id">
+            {{ item?.message }}
+          </div> -->
+          <div class="text poppins">
+            user 1
+            <!-- {{ item?.message }} -->
+          </div>
+          <!-- <div class="mtime poppins" *ngIf="item.user_id != currentUser.id">
+            {{ item?.created_at | date:'mediumTime' }}
+          </div> -->
+          <div class="mtime poppins">
+            <!-- {{ item?.created_at | date:'mediumTime' }} -->
+            20:000
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="type-box">
+      <input (keyup.enter)="sendMessage(item)" type="text" placeholder="Type a Message" />
+      <img (click)="sendMessage(item)" src="assets/images/Send icon.png" />
+    </div>
+  </div>
+
+</ion-content>

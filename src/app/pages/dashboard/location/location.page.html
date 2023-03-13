@@ -1,0 +1,9 @@
+<ion-content>
+  <div class="ion-text-center" *ngIf="loading">
+    <ion-spinner ></ion-spinner>
+  </div>
+  <app-cc-box-layout
+    [heading]="'RV Spots'"
+    [list]="filteredData"></app-cc-box-layout>
+  <div style="width: 100%; height: 100px"></div>
+</ion-content>

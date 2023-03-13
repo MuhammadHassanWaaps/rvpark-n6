@@ -1,0 +1,119 @@
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <div class="spots-main">
+          <div class="name sanseriflf demibold">Add RV Spots</div>
+          <div class="title poppins">Enter Your information</div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="ibox-inputs" [hidden]="step !== 1">
+    <form [formGroup]="aForm">
+      <app-icon-input-box (inputChange)="inputChange($event, 'id')"
+        [placeholder]="'id'"
+        [value]="this.aForm.controls['id'].value" [hidden]="true">
+      </app-icon-input-box>
+      <app-icon-input-box (inputChange)="inputChange($event, 'name')"
+        [placeholder]="'Name'"
+        [value]="this.aForm.controls['name'].value"></app-icon-input-box>
+      <app-icon-input-box (inputChange)="inputChange($event, 'location')"
+        [placeholder]="'Location'"
+        [value]="this.aForm.controls['location'].value"></app-icon-input-box>
+      <app-icon-input-box (inputChange)="inputChange($event, 'address')"
+        [placeholder]="'Street Address'"
+        [value]="this.aForm.controls['address'].value"></app-icon-input-box>
+      <app-icon-input-box (inputChange)="inputChange($event, 'country')"
+        [placeholder]="'Select Country'"
+        [value]="this.aForm.controls['country'].value"></app-icon-input-box>
+      <app-icon-input-box (inputChange)="inputChange($event, 'province')"
+        (click)="openStates()" [readonly]="true" [placeholder]="'Select State'"
+        [value]="this.aForm.controls['province'].value"></app-icon-input-box>
+      <app-icon-input-box (inputChange)="inputChange($event, 'city')"
+        (click)="openCities()" [readonly]="true" [placeholder]="'Select City'"
+        [value]="this.aForm.controls['city'].value"></app-icon-input-box>
+      <app-icon-input-box type="textarea" (inputChange)="inputChange($event,
+        'description')"
+        [placeholder]="'Description'"
+        [value]="this.aForm.controls['description'].value">
+      </app-icon-input-box>
+      <ion-button [disabled]="loading" expand="block" shape="round"
+        class="sanseriflf demibold" (click)="addRv()">
+        <span *ngIf="!loading">SUBMIT</span>
+        <ion-spinner *ngIf="loading"></ion-spinner>
+      </ion-button>
+    </form>
+  </div>
+
+  <div [hidden]="step !== 2">
+    <ion-list>
+      <ion-item (click)="addSpot()">
+        <ion-label>
+          <h2>Add Spots of {{park?.name}}</h2>
+          <p>{{park?.address}}</p>
+        </ion-label>
+        <ion-button slot="end" fill="clear">Add Spot</ion-button>
+      </ion-item>
+
+      <ion-item *ngFor="let item of spotlist" lines="none">
+        <ion-label (click)="goToEditPark(item)">
+          <h2>{{item['spot_name']}}</h2>
+          <!-- <ion-button style="height: 25px; font-size: 12px; margin-left: 13.5vh;"> Edit Park</ion-button>
+          <ion-button style="height: 25px; font-size: 12px;"> Delete Park</ion-button> -->
+          <p>{{item['spot_location']}}</p>
+          <ion-chip *ngFor="let item of item['available_date']; let i= index"
+            style="margin-top: 10px">
+            <ion-label>{{ item['available_spot_date'] | date: 'Y-MM-dd' }}</ion-label>
+            -
+            <ion-label>{{ item['available_spot_end_date'] | date: 'Y-MM-dd' }}</ion-label>
+          </ion-chip>
+        </ion-label>
+        <ion-badge>{{item['spot_price']}}</ion-badge>
+        <ion-icon name="trash-outline" style="margin-left: 10px;"
+          (click)="deleteSpot(item)"></ion-icon>
+      </ion-item>
+
+      <ion-button [disabled]="loading" expand="block" shape="round"
+        class="sanseriflf demibold" (click)="addImages()"
+        style="margin-top: 16px">
+        <span *ngIf="!loading">Add Images</span>
+        <ion-spinner *ngIf="loading"></ion-spinner>
+      </ion-button>
+    </ion-list>
+  </div>
+
+  <div [hidden]="step !== 3">
+    <ion-list>
+      <ion-item (click)="uploadImage()" lines="none">
+        <ion-label>
+          <h2>Add Images of {{park?.name}}</h2>
+          <p>{{park?.address}}</p>
+        </ion-label>
+        <ion-button slot="end" fill="clear">Add Spot Image</ion-button>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div class="outer-flex-images" [hidden]="step !== 3">
+    <div class="title poppins">Upload Picture</div>
+    <div class="inner-flex-images">
+      <div *ngFor="let item of urls" class="box-4564 square"
+        [style.background-image]="'url(' + getItemImage(item) + ')'">
+        <ion-icon name="close-circle-outline" (click)="deleteImage(item)"></ion-icon>
+        <img class="plus-image-in-center" *ngIf="!item.image_url"
+          src="assets/svgs/plus-icon.svg" />
+      </div>
+    </div>
+    <input style="display: none" id="file-input" #fileInput type="file"
+      accept="image/*"
+      (change)="onSelectFile($event)" />
+    <ion-button [disabled]="loading" expand="block" shape="round"
+      class="sanseriflf demibold" (click)="finishProcess()"
+      style="margin-top: 16px">
+      <span *ngIf="!loading">SUBMIT</span>
+      <ion-spinner *ngIf="loading"></ion-spinner>
+    </ion-button>
+  </div>
+  <div class="extra"></div>
+</ion-content>

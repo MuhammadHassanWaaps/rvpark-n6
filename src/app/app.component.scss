@@ -1,0 +1,58 @@
+.sidebarContainer{
+    --background: #167206;
+    // height: 100%;
+    width: 243px;
+}
+.profileContainer{
+    background-color: #166A08;
+    height: 219px;
+    width: 243px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 29px;
+    padding-bottom: 29px;
+}
+.joinButton{
+    --background: white;
+    color: #167206;
+    border-radius: 16px;
+    font-size: 10px;
+}
+.name{
+    padding: 0;
+    margin: 0;
+    color: white;
+    font-size: 20px;
+    font-weight: 400;
+}
+.sideBarButtons{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    --background:none;
+    font-size: 12px;
+
+}
+
+ul{
+    width: 243px;
+    background-color: #167206;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    // border: 1px solid;
+}
+
+li{
+    width: 243px;
+    display: flex;
+    justify-content:flex-start;
+
+    align-items: center;
+    font-size: 12px; 
+    padding-left: 41px;
+}

@@ -1,0 +1,69 @@
+<ion-header>
+  <div class="b-header-output">
+    <div class="b-header-main">
+      <div class="menu-icon-outer">
+        <ion-buttons slot="start">
+          <ion-button (click)="closeModal()">
+            <ion-icon name="chevron-back-outline" color="dark"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+        <h4 style="color: black;" class="sanseriflf demibold">cart</h4>
+      </div>
+      <img src="assets/images/notification.png" />
+    </div>
+    <div class="main-icon-outer"></div>
+  </div>
+</ion-header>
+<ion-content>
+
+
+
+
+  <app-cart-list-item ></app-cart-list-item>
+  <div class="bn765">
+    <div class="checkout-outer" style="border-bottom: 2px solid #EBEBEB; margin-bottom: 20px;">
+      <div class="apply-code-main">
+        <div class="apply-code">
+          <ion-item class="input">
+            <ion-input placeholder="Add promo code"></ion-input>
+          </ion-item>
+          <ion-buttons slot="start">
+            <ion-button class="button"> APPLY CODE </ion-button>
+          </ion-buttons>
+        </div>
+      </div>
+    </div>
+    <div class="checkout">
+      <div class="checkout-price-main">
+        <h1>Payment</h1>
+        <div class="paymentContainer">
+          <div class="payment">
+            <span class="paymentKey sanseriflf demibold">PRICE</span>
+            <span class="paymenyValue sanseriflf demibold">$ {{cartServ.total}}</span>
+          </div>
+          <div class="payment">
+            <span class="paymentKey sanseriflf demibold">FEES</span>
+            <span class="paymenyValue">$ {{ cartServ.net_total - cartServ.total}}</span>
+          </div>
+
+          <div class="payment">
+            <span class="paymentKey sanseriflf demibold">TOTAL</span>
+            <span class="paymenyValue">$ {{cartServ.net_total}} </span>
+          </div>
+
+        </div>
+
+        <ion-button (click)="openCheckout()" [disabled]="cartServ.net_total === 0" shape="round" color="primary" expand="block" class="checkout-button">
+          CHECKOUT
+        </ion-button>
+
+
+
+      </div>
+    </div>
+  </div>
+  <!-- <div style="height: 100%; width: 100%; overflow: hidden;"> -->
+  <!-- <app-home-switcher></app-home-switcher> -->
+  <!-- </div> -->
+
+</ion-content>

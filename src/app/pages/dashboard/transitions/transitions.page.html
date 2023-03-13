@@ -1,0 +1,83 @@
+<ion-header [hidden]="!isModal">
+  <div class="b-header-output">
+    <div class="b-header-main">
+      <div class="menu-icon-outer">
+        <ion-buttons slot="start">
+          <ion-button (click)="closeModal()">
+            <ion-icon name="chevron-back-outline" color="dark"></ion-icon>
+          </ion-button>
+        <h4 style="color: black;" class="sanseriflf demibold">Transactions</h4>
+
+        </ion-buttons>
+      </div>
+    </div>
+  </div>
+</ion-header>
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Total Amount</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+{{totalAmount}}
+  </ion-card-content>
+</ion-card>
+<ion-content class="ion-padding">
+
+  <div class="header-row-254646">
+    <div class="p-item-687 medium">
+      Name
+    </div>
+    <div class="p-item-687 medium">
+      Date
+    </div>
+    <div class="p-item-687 medium">
+      Payment
+    </div>
+    <div class="p-item-687 medium">
+      Status
+    </div>
+    <div class="p-item-687 medium">
+      Details
+    </div>
+  </div>
+
+  <ion-item *ngIf="list.length === 0">
+    <ion-label>
+      No Transactions found
+    </ion-label>
+  </ion-item>
+
+  <div class="header-row-254646 bg-w-698675" *ngFor="let item of list">
+    <div class="p-item-687 medium">
+      {{item?.receiver?.name}}
+    </div>
+    <div class="p-item-687 medium">
+      {{item.created_at | date: 'shortDate' }}
+    </div>
+    <div class="p-item-687 medium">
+      ${{ item?.amount}}
+    </div>
+    <div class="p-item-687 medium">
+      Pending
+    </div>
+    <div class="p-item-687 medium">
+      <img src="assets/svgs/dot-round.svg" />
+    </div>
+  </div>
+
+
+
+  <!-- <div class="b-button-outer">
+    <ion-button
+    [disabled]="loading"
+    class="cancel_button"
+    shape="round"
+    expand="block"
+    (click)="cancel()"
+  >
+    <span >Back</span>
+  </ion-button> -->
+  <!-- </div> -->
+
+</ion-content>

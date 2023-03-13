@@ -1,0 +1,205 @@
+<div
+  class="sansSerifFLF demiBold login-component-mainheading"
+  style="font-size: 28px"
+>
+  Sign Up to KJ RV Portal
+</div>
+<div class="poppins regular login-component-heading" style="font-size: 14px">
+  Add Your Details to Singup
+</div>
+
+<form [formGroup]="aForm" [hidden]="step !== 1">
+  <div class="example">
+    <label class="radio-button">
+      <input
+        type="radio"
+        class="radio-button__input"
+        id="choice1-1"
+        formControlName="option"
+        value="user"
+      />
+      <span class="radio-button__control"></span>
+      <span
+        class="radio-button__label sanseriflf demibold"
+        style="font-size: 16px"
+        >Renter portal</span
+      >
+    </label>
+    <label class="radio-button">
+      <input
+        type="radio"
+        class="radio-button__input"
+        id="choice1-2"
+        formControlName="option"
+        value="renter"
+      />
+      <span class="radio-button__control"></span>
+      <span
+        class="radio-button__label sanseriflf demibold"
+        style="font-size: 16px"
+        >Park Owner</span
+      >
+    </label>
+  </div>
+  <div class="box-1">
+    <div class="ibox-inputs signup">
+
+
+
+
+      <app-icon-input-box
+        [leftIcon]="'person'"
+        [placeholder]="'Full Name'"
+        (inputChange)="inputChange($event, 'name')"
+        [value]="aForm.controls['name'].value"
+      >
+    </app-icon-input-box>
+      <app-icon-input-box
+        [leftIcon]="'mail'"
+        [placeholder]="'Email Address'"
+        (inputChange)="inputChange($event, 'email')"
+        [value]="aForm.controls['email'].value"
+      ></app-icon-input-box>
+      <app-icon-input-box
+        [leftIcon]="'call'"
+        [placeholder]="'Phone Number'"
+        (inputChange)="inputChange($event, 'phone_number')"
+        [value]="aForm.controls['phone_number'].value"
+      ></app-icon-input-box>
+      <app-icon-input-box
+        [leftIcon]="'lock-closed'"
+        [placeholder]="'Password'"
+        [rightIcon]="'eye'"
+        type="password"
+        (inputChange)="inputChange($event, 'password')"
+        [value]="aForm.controls['password'].value"
+      ></app-icon-input-box>
+
+
+
+      <app-icon-input-box
+        [leftIcon]="'calendar'"
+        [placeholder]="'Age'"
+        type="number"
+        (inputChange)="inputChange($event, 'age')"
+        (change)="dateOfBirth($event)"
+      ></app-icon-input-box>
+    </div>
+
+    
+    <div class="b-button-outer">
+      <!-- [disabled]="aForm.controls['password'].value" -->
+      <ion-button
+        class="signup_button"
+        shape="round"
+        expand="block"
+        color=""
+        *ngIf="!agreePrivacyPolicy"
+        (click)="gotoprivacy()"
+        
+      >
+        Plesse read Terms & conditions
+      </ion-button>
+    </div>
+    <div class="b-button-outer">
+      <!-- [disabled]="!enableDateOfBirth" -->
+      <ion-button
+        class="signup_button"
+        shape="round"
+        expand="block"
+        color=""
+        *ngIf="agreePrivacyPolicy"
+        (click)="signupPartOne()"
+        
+      >
+        SIGNUP
+      </ion-button>
+    </div>
+  </div>
+</form>
+
+<form [formGroup]="bForm">
+  <div class="box-1" [hidden]="step !== 2">
+    <div class="ibox-inputs signup">
+      <app-icon-input-box
+        [placeholder]="'Street Address'"
+        (inputChange)="inputChange($event, 'street_address')"
+        [value]="bForm.controls['street_address'].value"
+      ></app-icon-input-box>
+      <app-icon-input-box
+        [placeholder]="'Select State'"
+        (click)="openStates()"
+        [readonly]="true"
+        (inputChange)="inputChange($event, 'province')"
+        [rightIcon]="'caret-down-outline'"
+        [value]="bForm.controls['province'].value"
+      ></app-icon-input-box>
+      <app-icon-input-box
+        [placeholder]="'Select City'"
+        (click)="openCities()"
+        [readonly]="true"
+        (inputChange)="inputChange($event, 'city')"
+        [value]="bForm.controls['city'].value"
+        [rightIcon]="'caret-down-outline'"
+      ></app-icon-input-box>
+
+      <app-icon-input-box
+        [placeholder]="'Select Country'"
+        [readonly]="true"
+        (inputChange)="inputChange($event, 'country')"
+        [value]="bForm.controls['country'].value"
+      ></app-icon-input-box>
+    </div>
+    <div class="b-button-outer">
+      <ion-button
+        class="signup_button"
+        shape="round"
+        expand="block"
+        color=""
+        (click)="gotoNext()"
+      >
+        NEXT
+      </ion-button>
+    </div>
+  </div>
+</form>
+
+<!-- <form [formGroup]="cForm">
+  <div class="box-1" [hidden]="step !== 3">
+    <div class="ibox-inputs signup">
+      <p>Add Card Details for verification (no charges made)</p>
+
+      <app-icon-input-box
+        [placeholder]="'Card Number'"
+        (inputChange)="inputChange($event, 'card_no')"
+        [value]="cForm.controls['card_no'].value"
+      ></app-icon-input-box>
+      <app-icon-input-box
+        [placeholder]="'Expire Month '"
+        (inputChange)="inputChange($event, 'expire_month')"
+        [value]="cForm.controls['expire_month'].value"
+      ></app-icon-input-box>
+      <app-icon-input-box
+        [placeholder]="'Expire year'"
+        (inputChange)="inputChange($event, 'expire_year')"
+        [value]="cForm.controls['expire_year'].value"
+      ></app-icon-input-box>
+      <app-icon-input-box
+        [placeholder]="'CVC'"
+        (inputChange)="inputChange($event, 'cvc')"
+        [value]="cForm.controls['cvc'].value"
+      ></app-icon-input-box>
+    </div>
+    <div class="b-button-outer">
+      <ion-button
+        class="signup_button"
+        shape="round"
+        expand="block"
+        color=""
+        (click)="verifyCard()"
+      >
+        NEXT
+      </ion-button>
+    </div>
+  </div>
+</form> -->

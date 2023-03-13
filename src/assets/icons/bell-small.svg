@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21">
+  <g id="Group_894" data-name="Group 894" transform="translate(-305 -48)">
+    <g id="Group_913" data-name="Group 913">
+      <circle id="Ellipse_220" data-name="Ellipse 220" cx="10.5" cy="10.5" r="10.5" transform="translate(305 48)" fill="#8dc73d"/>
+      <g id="Icon_feather-shopping-cart" data-name="Icon feather-shopping-cart" transform="translate(308.5 52.137)">
+        <path id="Path_1191" data-name="Path 1191" d="M13.131,30.565A.565.565,0,1,1,12.565,30,.565.565,0,0,1,13.131,30.565Z" transform="translate(-7.034 -19.098)" fill="#fff" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.8"/>
+        <path id="Path_1192" data-name="Path 1192" d="M29.631,30.565A.565.565,0,1,1,29.065,30,.565.565,0,0,1,29.631,30.565Z" transform="translate(-18.227 -19.098)" fill="#fff" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.8"/>
+        <path id="Path_1193" data-name="Path 1193" d="M1.5,1.5H3.506L4.85,7.874a.993.993,0,0,0,1,.766h4.875a.993.993,0,0,0,1-.766l.8-3.994H4.008" transform="translate(0 0)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>

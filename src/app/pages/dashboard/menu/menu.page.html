@@ -1,0 +1,9 @@
+<ion-content>
+  <div *ngFor="let item of obje">
+    <app-cc-box-layout
+      (selection)="openSelection($event)"
+      [heading]="item.heading"
+      [list]="item.list"
+    ></app-cc-box-layout>
+  </div>
+</ion-content>

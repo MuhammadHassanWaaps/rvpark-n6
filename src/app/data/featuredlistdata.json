@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "image": "assets/images/fl1.png",
+        "heading": "About News",
+        "subheading": "World of Outlaws"
+    },
+    {
+        "id": 2,
+        "image": "assets/images/fl2.png",
+        "heading": "About News",
+        "subheading": "World of Outlaws"
+    },
+    {
+        "id": 3,
+        "image": "assets/images/fl3.png",
+        "heading": "About News",
+        "subheading": "World of Outlaws"
+    },
+    {
+        "id": 4,
+        "image": "assets/images/fl4.png",
+        "heading": "About News",
+        "subheading": "World of Outlaws"
+    },
+    {
+        "id": 5,
+        "image": "assets/images/fl5.png",
+        "heading": "About News",
+        "subheading": "World of Outlaws"
+    },
+    {
+        "id": 6,
+        "image": "assets/images/fl6.png",
+        "heading": "About News",
+        "subheading": "World of Outlaws"
+    }
+]

@@ -1,0 +1,51 @@
+<!-- <ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button (click)="nav.pop()">
+        <ion-icon color="medium" name="arrow-back-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content class="ion-padding">
+  <!-- <ion-grid class="ion-margin"> -->
+    <!-- <ion-row size="3">
+      <ion-col class="logo-col" size="12">
+      this is the content
+      </ion-col>
+    </ion-row> -->
+
+    <swiper class="swiper-outer" #swiper>
+      <ng-template swiperSlide class="swiper-inner">
+        <app-login-slide
+          (gotoSignup)="gotoSignup()"
+          (gotoDashboard)="gotoDashboard()"
+          (gotoFbp)="gotoFp()"
+          class="w-100"
+        ></app-login-slide>
+      </ng-template>
+      <ng-template swiperSlide class="swiper-inner">
+        <app-signup-slide
+          [step]="signupstep"
+          (gotoLogin)="gotoLogin()"
+
+          class="w-100"
+        ></app-signup-slide>
+      </ng-template>
+      <!-- <ng-template swiperSlide class="swiper-inner">
+
+      </ng-template>
+      <ng-template swiperSlide class="swiper-inner"> -->
+
+      <!-- </ng-template> -->
+      <ng-template swiperSlide class="swiper-inner">
+        <app-forgetpassword-slide
+          (gotoSignup)="gotoSignup()"
+          class="w-100"
+        ></app-forgetpassword-slide>
+      </ng-template>
+      <!-- <ng-template swiperSlide class="swiper-inner">Slide 3</ng-template> -->
+    </swiper>
+  <!-- </ion-grid> -->
+</ion-content>

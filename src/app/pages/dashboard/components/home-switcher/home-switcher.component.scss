@@ -1,0 +1,38 @@
+.menu-box-outer {
+  background: #ffffff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% - 32px);
+  height: calc(100% - 17px);
+  transform: translate(-50%, -50%);
+  border-radius: 60px;
+  border: 1px solid #f1f1f1;
+  filter: drop-shadow(0px 3px 10px rgba(241, 241, 241, 1));
+}
+.menu-box-items {
+  background: #ffffff;
+  width: calc(100% - 50px);
+  height: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  .box-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img {
+      height: 20px;
+    }
+    ion-text {
+      font-size: 9px;
+      color: #9e9e9e;
+    }
+    ion-text.active {
+      color: var(--ion-color-primary);
+    }
+  }
+}

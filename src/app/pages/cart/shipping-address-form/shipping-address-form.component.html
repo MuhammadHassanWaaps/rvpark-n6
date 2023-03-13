@@ -1,0 +1,52 @@
+<ion-content class="ion-padding">
+
+  <form [formGroup]="aForm">
+    <div class="sanseriflf demibold login-component-mainheading" style="font-size: 28px;">
+      Shipping Address
+    </div>
+    <div class="poppins login-component-heading" style="font-size: 14px;">
+      Add Your Details to Checkout
+    </div>
+    <div class="ibox-inputs">
+      <app-icon-input-box
+        [leftIcon]="'list-outline'"
+        [placeholder]="'Full Name'"
+        (inputChange)="inputChange($event, 'name')"
+        [value]="aForm.controls['name'].value"
+      ></app-icon-input-box>
+      <app-icon-input-box
+        [leftIcon]="'list-outline'"
+        [placeholder]="'Address line'"
+        (inputChange)="inputChange($event, 'address_line_one')"
+        [value]="aForm.controls['address_line_one'].value"
+      ></app-icon-input-box>
+      <app-icon-input-box
+        [leftIcon]="'list-outline'"
+        [placeholder]="'Address line'"
+        (inputChange)="inputChange($event, 'address_line_two')"
+        [value]="aForm.controls['address_line_two'].value"
+      ></app-icon-input-box>
+      <app-icon-input-box
+        [leftIcon]="'list-outline'"
+        [placeholder]="'Address line'"
+        (inputChange)="inputChange($event, 'address_line_three')"
+        [value]="aForm.controls['address_line_three'].value"
+      ></app-icon-input-box>
+    </div>
+    <div class="b-button-outer">
+      <ion-button
+        [disabled]="loading"
+        class="login_button"
+        shape="round"
+        expand="block"
+        (click)="addUpdateShippingAddress()"
+      >
+        <span *ngIf="!loading">SUBMIT</span>
+        <ion-spinner *ngIf="loading"></ion-spinner>
+      </ion-button>
+    </div>
+
+    <!--  -->
+  </form>
+</ion-content>
+
