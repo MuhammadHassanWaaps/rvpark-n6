@@ -14,6 +14,7 @@ import { BasePage } from '../base-page/base-page';
 import { CartPage } from '../cart/cart.page';
 import { DatePickerComponent } from './date-picker/date-picker.component';
 import { PackagesPage } from '../dashboard/packages/packages.page';
+import { ChatBoxComponent } from '../dashboard/chat/chat-box/chat-box.component';
 
 @Component({
   selector: 'app-menu-details',
@@ -179,7 +180,7 @@ export class MenuDetailsPage extends BasePage implements OnInit {
 
       // this.price = 0;
       // if(this.data.park_sopts.length > 0){
-      //   this.price = this.data.park_sopts[0]?.spot_price;  
+      //   this.price = this.data.park_sopts[0]?.spot_price;
       // }
 
       // this.price = this.data.park_sopts[0]?.spot_price;
@@ -194,7 +195,7 @@ export class MenuDetailsPage extends BasePage implements OnInit {
       this.nav.pop();
       return;
     });
-    
+
   }
 
   back() {
@@ -239,7 +240,7 @@ export class MenuDetailsPage extends BasePage implements OnInit {
 
   async checkMyItemSelected(item, aitem){
 
-     
+
 
     let findIndex = this.selectedPackageId.findIndex(x => x == aitem.id)
     if(findIndex != -1) {
@@ -349,14 +350,23 @@ export class MenuDetailsPage extends BasePage implements OnInit {
   }
   async changeSpot(param,item){
     console.log(param.target.value);
-    
+
     let data = {
       spot_id : item.id,
       availability : param.target.value
     }
     this.network.changeSpotAvailablility(data).then((res)=>{
       console.log(res);
-      
-    })    
+
+    })
+  }
+
+  async openChat(){
+
+    const res = await this.modals.present(ChatBoxComponent, {
+      data: this.data
+    });
+
+    console.log(res);
   }
 }

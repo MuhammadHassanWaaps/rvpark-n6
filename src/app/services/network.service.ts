@@ -25,7 +25,7 @@ export class NetworkService {
     for (const p in obj) {
       if (obj.hasOwnProperty(p)) {
         let f: string = p;
-        let r = 
+        let r =
         str.push(`${f}=${obj[f]}`);
       }
     }
@@ -216,8 +216,11 @@ export class NetworkService {
     return this.httpDeleteResponse(`posts/${post_id}`);
   }
 
-  getChatMessages(id = '4edff87e-4b27-479b-ab5a-6f6841f6ec83') {
-    return this.httpGetResponse(`chats/messages/${id}?page=1`, null, false);
+  getChatMessages(id) {
+    return this.httpGetResponse(`chat/messages?channel_id=${id}`, null, false);
+  }
+  sendChatMessages(data) {
+    return this.httpPostResponse(`chat/messages`, data);
   }
   getSpotDates(data) {
     return this.httpPostResponse(`get-available-between-dates`, data, null, true, false);
@@ -225,9 +228,7 @@ export class NetworkService {
   getOrders() {
     return this.httpGetResponse(`my-received-transactions`, null, true, false);
   }
-  sendChatMessages(data, id = '4f26f995-b292-4fae-8aba-2d2ebbb84edb') {
-    return this.httpPostResponse(`chats/messages/${id}`, data);
-  }
+
 
 
   getFriends() {
@@ -602,6 +603,16 @@ export class NetworkService {
       `charge-payment/${email}/${package_id}/${token}`,
       null
     );
+  }
+
+  chatChannelCreate(user_id){
+    return this.httpPostResponse('chat/channel/create', {
+      user_id: user_id
+    })
+  }
+
+  broadcastingAuth(params){
+    return this.httpPostResponse('broadcasting/auth', params);
   }
 
   httpPostResponse(

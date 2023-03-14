@@ -22,7 +22,6 @@ import { NgxPubSubModule, NgxPubSubService } from '@pscoped/ngx-pub-sub';
 import { FirebaseService } from './services/firebase.service';
 import { EventsService } from './services/events.service';
 import { CalendarModule } from 'ion2-calendar';
-import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 @NgModule({
   declarations: [AppComponent, FilterPipePipe],
@@ -38,7 +37,6 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
     SwiperModule,
     CartPageModule,
     CalendarModule,
-    SocketIoModule
 
   ],
   providers: [
@@ -52,7 +50,8 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
     Stripe,
     NgxPubSubService,
     FirebaseService,
-    EventsService
+    EventsService,
+
   ],
   bootstrap: [AppComponent],
 })

@@ -16,6 +16,7 @@ import { SwiperModule } from 'swiper/angular';
 import { DatePickerModule } from './date-picker/date-picker.module';
 import { BuySpotModule } from './buy-spot/buy-spot.module';
 import { SelectSpotModule } from './select-spot/select-spot.module';
+import { ChatBoxModule } from '../dashboard/chat/chat-box/chat-box.module';
 // import { BuySpotModule } from './buy-spot/buy-spot.module';
 
 @NgModule({
@@ -31,7 +32,8 @@ import { SelectSpotModule } from './select-spot/select-spot.module';
     DatePickerModule,
     // BuySpotModule
     BuySpotModule,
-    SelectSpotModule
+    SelectSpotModule,
+    ChatBoxModule
 
   ],
   declarations: [MenuDetailsPage],

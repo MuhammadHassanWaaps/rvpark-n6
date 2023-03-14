@@ -7,11 +7,12 @@ import { BaseHeaderModule } from 'src/app/components/base-header/base-header.mod
 
 
 
+
 @NgModule({
   declarations: [ChatBoxComponent],
   imports: [
     CommonModule,FormsModule,IonicModule,
-    BaseHeaderModule
+    BaseHeaderModule,
   ],exports:[ChatBoxComponent]
 })
 export class ChatBoxModule { }

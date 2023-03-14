@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.rvpark.app',
-  appName: 'rvpark-n6',
+  appName: 'KJ RV Portal',
   webDir: 'www',
   bundledWebRuntime: false
 };
