@@ -1,3 +1,4 @@
+import { ChatPage } from './pages/dashboard/chat/chat.page';
 import { UserService } from 'src/app/services/user.service';
 import { NetworkService } from 'src/app/services/network.service';
 import { Component, EventEmitter, Injector, OnInit, Output } from '@angular/core';
@@ -42,9 +43,9 @@ export class AppComponent {
       },
       false
     );
-   
+
   }
-  
+
   initialize() {
     if (
       this.platform.is('cordova') ||
@@ -57,7 +58,7 @@ export class AppComponent {
 
   initializeApp() {
     console.log("initsjadfklasjd");
-    
+
     this.platform.ready().then(async () => {
       // await this.fcm.setupFMC();
     });
@@ -125,19 +126,26 @@ export class AppComponent {
     this.nav.push('pages/dashboard/home');
     this.menuCtrl.close()
   }
+  async openChat() {
+    console.log("go to Home")
+
+    // this.nav.push('pages/dashboard/chat');
+    await this.menuCtrl.close();
+    this.modals.present(ChatPage );
+  }
   gotoPrivacyPolicy() {
     console.log("go to privacy policy")
 
     this.nav.push('pages/dashboard/privacy-policy');
     this.menuCtrl.close()
   }
-  
+
   async gotoTransection() {
     const res = await this.modals.present(TransitionsPage, {
       type: 'order',
       isModal: true
     });
-  
+
     this.menuCtrl.close()
   }
 
@@ -146,7 +154,7 @@ export class AppComponent {
       type: 'order',
     });
   }
-  
+
   gotoCalander() {
     console.log('go to Calander')
 

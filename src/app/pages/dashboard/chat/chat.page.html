@@ -1,37 +1,38 @@
-<ion-content class="ion-padding">
-
-  <div (click)="goToChatRoom()" class="person-main" *ngFor="let item of
-    [1,1,1,1,1,1,1]">
-    <div
-      class="left"
-      [style.background-image]="'url(assets/images/dropDown.png)'"></div>
-    <div class="right">
-      <div class="name">
-        <!-- <span class="n poppins" *ngIf="isSender">{{
-          room?.reciver_detail?.name
-        }}</span> -->
-        <span class="n poppins">Hassan</span>
-        <!-- <span class="n poppins" *ngIf="!isSender">{{
-          room?.sender_detail?.name
-        }}</span> -->
-        <!-- <span class="m">{{
-          room?.last_message
-            ? room?.last_message
-            : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus quasi distinctio blanditiis repudiandae, doloribus sunt autem velit amet magnam optio odit eius culpa vero suscipit aliquam iste iusto cum! Deserunt illo ipsa facere numquam dolore! Excepturi eveniet ullam eaque assumenda ab, deleniti, esse similique doloremque at blanditiis explicabo non."
-        }}</span> -->
-        <span class="m">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-          repellendus quasi distinctio blanditiis repudiandae, doloribus sunt
-          autem velit amet magnam optio odit eius culpa vero suscipit aliquam
-          iste iusto cum! Deserunt illo ipsa facere numquam dolore! Excepturi
-          eveniet ullam eaque assumenda ab, deleniti, esse similique doloremque
-          at blanditiis explicabo non."
-        </span>
+<ion-header [class.curve-header]="true">
+  <div class="b-header-output">
+    <div class="b-header-main">
+      <div class="menu-icon-outer">
+        <ion-buttons slot="start" (click)="back()">
+          <ion-button>
+            <ion-icon name="chevron-back-outline" color="dark"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+        <h4 style="color: black" class="sanseriflf demibold">
+          Chats
+        </h4>
       </div>
-      <div class="message">
-        <span class="time poppins medium">20:00</span>
-        <!-- <span class="m-number poppins">1</span> -->
-      </div>
+      <!-- <div class="main-icon-outer"></div> -->
+      <!-- <div class="combined-icons">
+        <div class="bell-icon-outer">
+          <img src="assets/images/notification.png" />
+        </div>
+      </div> -->
     </div>
   </div>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+
+  <ion-list>
+    <ion-item *ngFor="let item of messages" (click)="goToChatRoom(item)">
+      <ion-label>
+        <h2>{{item.participant.name}}</h2>
+        <p>{{item?.last_message?.content}} - {{item?.last_message?.created_at | date: 'shortDate'}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
 </ion-content>

@@ -35,7 +35,7 @@ export class SelectSpotComponent extends BasePage implements OnInit, AfterViewIn
   _daysConfig: DayConfig[] = [];
   type = 'moment'; // 'string' | 'js-date' | 'moment' | 'time' | 'object'
   optionsRange: CalendarComponentOptions = {
-    pickMode: 'single',
+    pickMode: 'range',
     // disableWeeks: [0, 1, 6],
     daysConfig: [],
     // to: new Date('2023-03-31'),
@@ -152,7 +152,7 @@ export class SelectSpotComponent extends BasePage implements OnInit, AfterViewIn
       return true;
     }
 
-    // if from start date and end date has 
+    // if from start date and end date has
 
     let flag = false;
     for(var i = 0; i < this.occupiedDates.length; i++){
@@ -176,19 +176,19 @@ export class SelectSpotComponent extends BasePage implements OnInit, AfterViewIn
     this.expression = false;
     switch(this.ctype){
       case "daily":
-        this.optionsRange.pickMode = 'single';
+        this.optionsRange.pickMode = 'range';
       break;
       case "weekly":
         this.optionsRange.pickMode = 'range';
       break;
       case "monthly":
-        this.optionsRange.pickMode = 'range'; 
+        this.optionsRange.pickMode = 'range';
       break;
     }
     setTimeout( () => {
       this.expression = true;
     }, 1000)
-    
+
   }
 
   async checkMyItemSelected() {
@@ -323,8 +323,8 @@ export class SelectSpotComponent extends BasePage implements OnInit, AfterViewIn
       break;
     }
 
-    
-    
+
+
     this.dateRange = this.ctype == "daily" ? null : { from: moment(this.startdate), to: moment(this.enddate) };
 
 

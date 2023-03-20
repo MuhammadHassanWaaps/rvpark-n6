@@ -26,6 +26,12 @@
               <ion-button class="sideBarButtons"
                 expand="full">CART</ion-button>
             </li>
+            <!-- <li (click)="openChat()">
+              <img src="assets/images/notification.png"
+                alt="home_icon">
+              <ion-button class="sideBarButtons"
+                expand="full">Chat</ion-button>
+            </li> -->
             <li (click)="gotoPrivacyPolicy()">
               <img src="assets/images/privacy_policy_icon.png"
                 alt="home_icon">
@@ -52,6 +58,12 @@
             </li>
           </ul>
         </div>
+
+        <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+          <ion-fab-button color="light" (click)="openChat()">
+            <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
 
       </ion-content>
     </ion-menu>

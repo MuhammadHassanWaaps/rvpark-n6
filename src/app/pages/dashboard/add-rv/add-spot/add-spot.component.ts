@@ -40,7 +40,7 @@ export class AddSpotComponent extends BasePage implements OnInit {
   optionsRange: CalendarComponentOptions = {
     pickMode: 'single',
     // disableWeeks: [0, 1, 6],
-    daysConfig: [],    
+    daysConfig: [],
   };
 
   constructor(injector: Injector) {
@@ -77,13 +77,13 @@ export class AddSpotComponent extends BasePage implements OnInit {
     this.expression = false;
     switch(this.ctype){
       case "daily":
-        this.optionsRange.pickMode = 'single';
+        this.optionsRange.pickMode = 'range';
       break;
       case "weekly":
         this.optionsRange.pickMode = 'range';
       break;
       case "monthly":
-        this.optionsRange.pickMode = 'range'; 
+        this.optionsRange.pickMode = 'range';
       break;
     }
     setTimeout( () => {
@@ -117,8 +117,8 @@ export class AddSpotComponent extends BasePage implements OnInit {
 
     switch(this.ctype){
       case "daily":
-        this.start_Date = range.format('YYYY-MM-DD');
-        this.end_date = range.format('YYYY-MM-DD');
+        this.start_Date = range.from.format('YYYY-MM-DD');
+        this.end_date = range.to.format('YYYY-MM-DD');
       break;
       case "weekly":
         this.start_Date = range.from.format('YYYY-MM-DD');
@@ -143,7 +143,7 @@ export class AddSpotComponent extends BasePage implements OnInit {
     }
 
     this.dateRange = null;
-    
+
     this.dateRange = this.ctype == "daily" ? null : { from: moment(this.start_Date), to: moment(this.end_date) };
 
     let dobj = {
@@ -162,7 +162,7 @@ export class AddSpotComponent extends BasePage implements OnInit {
     this.endDateChange(eobj);
   }
 
-  
+
   availabilityChange($event) {
     this.availability = $event.detail.value;
     console.log($event.detail.value);
@@ -246,6 +246,12 @@ export class AddSpotComponent extends BasePage implements OnInit {
     const diffDays = Math.round(Math.abs((this.firstDate - this.secondDate) / oneDay));
     console.log("diffDays", diffDays);
     if (diffDays > 5) {
+      this.weeklyPackage = true;
+    }
+    else {
+      this.weeklyPackage = false;
+    }
+    if(diffDays > 6){
       this.weeklyPackage = true;
     }
     else {

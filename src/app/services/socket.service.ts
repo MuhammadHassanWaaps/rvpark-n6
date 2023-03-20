@@ -63,7 +63,7 @@ export class SocketService {
 
       if(this.socketId){
 
-        const res = await this.network.chatChannelCreate(params.user_id);
+        const res = await this.network.chatChannelCreate(params.user_id, params.id);
         console.log(res);
         this.channelId = res.id;
         console.log(this.channelId)

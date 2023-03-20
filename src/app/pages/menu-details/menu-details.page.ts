@@ -1,3 +1,5 @@
+import { ChatPageModule } from './../dashboard/chat/chat.module';
+import { ChatListComponent } from './../dashboard/chat/chat-list/chat-list.component';
 
 import { AddRvPage } from './../dashboard/add-rv/add-rv.page';
 import {
@@ -15,6 +17,7 @@ import { CartPage } from '../cart/cart.page';
 import { DatePickerComponent } from './date-picker/date-picker.component';
 import { PackagesPage } from '../dashboard/packages/packages.page';
 import { ChatBoxComponent } from '../dashboard/chat/chat-box/chat-box.component';
+import { ChatPage } from '../dashboard/chat/chat.page';
 
 @Component({
   selector: 'app-menu-details',
@@ -42,6 +45,7 @@ export class MenuDetailsPage extends BasePage implements OnInit {
   url;
   park_images;
   park_spots;
+  currentUser;
   // role_id: any;
   park;
   selectedPackageId: any[] = [];
@@ -147,6 +151,11 @@ export class MenuDetailsPage extends BasePage implements OnInit {
     if (params) {
       let id = JSON.parse(params['item_id']);
       this.park_id = id;
+
+      const string: any = localStorage.getItem('user');
+      let user = JSON.parse(string);
+      this.currentUser = user;
+      console.log("Current User : ", this.currentUser);
 
       if(!id){
         this.nav.pop();
@@ -361,12 +370,17 @@ export class MenuDetailsPage extends BasePage implements OnInit {
     })
   }
 
-  async openChat(){
+  openChat() {
+    console.log("go to Home")
 
-    const res = await this.modals.present(ChatBoxComponent, {
-      data: this.data
-    });
+    if(this.currentUser.id == this.data.user_id){
+      // this.nav.push('pages/dashboard/chat',{park_id:this.park_id});
+      this.modals.present(ChatPage,{park_id:this.park_id} );
+    } else {
+      this.modals.present(ChatBoxComponent,{park_id:this.park_id, data: this.data})
+    }
 
-    console.log(res);
+
+
   }
 }

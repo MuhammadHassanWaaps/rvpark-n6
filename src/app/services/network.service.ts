@@ -605,15 +605,24 @@ export class NetworkService {
     );
   }
 
-  chatChannelCreate(user_id){
+  chatChannelCreate(user_id, park_id){
     return this.httpPostResponse('chat/channel/create', {
-      user_id: user_id
+      user_id: user_id,
+      park_id: park_id
     })
   }
 
   broadcastingAuth(params){
     return this.httpPostResponse('broadcasting/auth', params);
   }
+
+  getChannels(park_id){
+
+    let url = `chat/channels` + (park_id ? '/' + park_id : '' )
+    return this.httpGetResponse(url, null);
+  }
+
+
 
   httpPostResponse(
     key,
