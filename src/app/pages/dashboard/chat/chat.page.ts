@@ -127,7 +127,7 @@ export class ChatPage  extends BasePage implements  OnInit {
     // };
     // this.modals.present(ChatViewComponent, { data });
     let obj = {
-      id: this.park_id,
+      id: item.park_id,
       user_id: this.currentUser.id
     }
     this.modals.present(ChatBoxComponent,{data:obj})

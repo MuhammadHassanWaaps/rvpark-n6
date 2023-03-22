@@ -74,7 +74,17 @@ export class AddSpotComponent extends BasePage implements OnInit {
   }
 
   ctyleChange($event){
-    console.log($event);
+    console.log("event" , $event);
+    if($event == true)
+    {
+      this.ctype = "weekly"
+      return;
+    }
+    if($event == true)
+    {
+      this.ctype = "monthly"
+      return;
+    }
     let v = $event.target.value;
     console.log(v);
     this.expression = false;
@@ -120,8 +130,6 @@ export class AddSpotComponent extends BasePage implements OnInit {
 
     switch(this.ctype){
       case "daily":
-        // this.start_Date = range.format('YYYY-MM-DD');
-        // this.end_date = range.format('YYYY-MM-DD');
         this.start_Date = range?.from?.format('YYYY-MM-DD');
         this.end_date = range?.to?.format('YYYY-MM-DD');
       break;
@@ -137,7 +145,6 @@ export class AddSpotComponent extends BasePage implements OnInit {
 
     switch(this.ctype){
       case "daily":
-        // this.end_date = range;
         // this.end_date = range.from.add(1, 'week').subtract(1, 'day').format('YYYY-MM-DD');
       break;
       case "weekly":
@@ -258,12 +265,20 @@ export class AddSpotComponent extends BasePage implements OnInit {
       this.dailyPackage = false;
     } if (diffDays > 5) {
       this.weeklyPackage = true;
+      if(this.weeklyPackage = true)
+      {
+        this.ctyleChange(this.weeklyPackage)
+      }
     }
     else {
       this.weeklyPackage = false;
     }
     if (diffDays > 28) {
       this.monthlyPackage = true;
+      if(this.monthlyPackage = true)
+      {
+        this.ctyleChange(this.monthlyPackage)
+      }
     }
     else {
       this.monthlyPackage = false;
