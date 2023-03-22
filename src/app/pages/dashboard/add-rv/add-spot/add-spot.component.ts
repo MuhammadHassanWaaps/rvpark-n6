@@ -24,13 +24,15 @@ export class AddSpotComponent extends BasePage implements OnInit {
   end_date;
   firstDate;
   secondDate;
-  ctype = "daily";
+  // ctype = "daily";
+  ctype : any;
   @Input() public park_id;
   @Input() public item;
   @Input() public edit = false;
   id;
   weeklyPackage = false;
   monthlyPackage = false;
+  dailyPackage = false;
 
   aForm!: FormGroup;
   expression = false;
@@ -42,6 +44,7 @@ export class AddSpotComponent extends BasePage implements OnInit {
     // disableWeeks: [0, 1, 6],
     daysConfig: [],
   };
+
 
   constructor(injector: Injector) {
     super(injector);
@@ -117,8 +120,10 @@ export class AddSpotComponent extends BasePage implements OnInit {
 
     switch(this.ctype){
       case "daily":
-        this.start_Date = range.from.format('YYYY-MM-DD');
-        this.end_date = range.to.format('YYYY-MM-DD');
+        // this.start_Date = range.format('YYYY-MM-DD');
+        // this.end_date = range.format('YYYY-MM-DD');
+        this.start_Date = range?.from?.format('YYYY-MM-DD');
+        this.end_date = range?.to?.format('YYYY-MM-DD');
       break;
       case "weekly":
         this.start_Date = range.from.format('YYYY-MM-DD');
@@ -132,7 +137,8 @@ export class AddSpotComponent extends BasePage implements OnInit {
 
     switch(this.ctype){
       case "daily":
-        this.end_date = range;
+        // this.end_date = range;
+        // this.end_date = range.from.add(1, 'week').subtract(1, 'day').format('YYYY-MM-DD');
       break;
       case "weekly":
         this.end_date = range.from.add(1, 'week').subtract(1, 'day').format('YYYY-MM-DD');
@@ -144,7 +150,7 @@ export class AddSpotComponent extends BasePage implements OnInit {
 
     this.dateRange = null;
 
-    this.dateRange = this.ctype == "daily" ? null : { from: moment(this.start_Date), to: moment(this.end_date) };
+    this.dateRange = /* this.ctype == "daily" ? null : */ { from: moment(this.start_Date), to: moment(this.end_date) };
 
     let dobj = {
       detail: {
@@ -245,13 +251,12 @@ export class AddSpotComponent extends BasePage implements OnInit {
     this.secondDate = new Date($event.detail.value);
     const diffDays = Math.round(Math.abs((this.firstDate - this.secondDate) / oneDay));
     console.log("diffDays", diffDays);
-    if (diffDays > 5) {
-      this.weeklyPackage = true;
+    if (diffDays < 4) {
+      this.dailyPackage = true;
     }
     else {
-      this.weeklyPackage = false;
-    }
-    if(diffDays > 6){
+      this.dailyPackage = false;
+    } if (diffDays > 5) {
       this.weeklyPackage = true;
     }
     else {
