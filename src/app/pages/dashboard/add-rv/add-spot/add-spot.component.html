@@ -19,7 +19,7 @@
   <!-- <h6 class="head">Spot Name</h6> -->
   <div class="round-box inputs">
     <ion-input
-      [(ngModel)]="spot_name"      
+      [(ngModel)]="spot_name"
       name="spot_name"
       placeholder="Spot Name">
       </ion-input>
@@ -31,7 +31,7 @@
       <ion-select-option value="monthly">Monthly</ion-select-option>
     </ion-select>
     <!-- <ion-select
-      [(ngModel)]="spot_name"      
+      [(ngModel)]="spot_name"
       name="spot_name"
       placeholder="Spot Name">
       </ion-input> -->
@@ -62,9 +62,8 @@
     </div>
   </div> -->
   <h6 class="head">Packages*</h6>
-  <div *ngIf="daily">
+  <div *ngIf="isDailyPackageDone()">
     <h6 class="head">Daily</h6>
-    <!-- <h6 class="head">{{daily}}</h6> -->
     <div class="most-input-outer" style="margin-top: -10px">
       <div class="round-box">
         <div class="center-input-box">

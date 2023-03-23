@@ -24,8 +24,9 @@ export class AddSpotComponent extends BasePage implements OnInit {
   end_date;
   firstDate;
   secondDate;
-  // ctype = "daily";
-  ctype : any;
+  multidate : any;
+  ctype = "daily";
+
   @Input() public park_id;
   @Input() public item;
   @Input() public edit = false;
@@ -40,7 +41,7 @@ export class AddSpotComponent extends BasePage implements OnInit {
   _daysConfig: DayConfig[] = [];
   type = 'moment'; // 'string' | 'js-date' | 'moment' | 'time' | 'object'
   optionsRange: CalendarComponentOptions = {
-    pickMode: 'single',
+    pickMode: 'multi',
     // disableWeeks: [0, 1, 6],
     daysConfig: [],
   };
@@ -90,7 +91,7 @@ export class AddSpotComponent extends BasePage implements OnInit {
     this.expression = false;
     switch(this.ctype){
       case "daily":
-        this.optionsRange.pickMode = 'range';
+        this.optionsRange.pickMode = 'multi';
       break;
       case "weekly":
         this.optionsRange.pickMode = 'range';
@@ -130,8 +131,13 @@ export class AddSpotComponent extends BasePage implements OnInit {
 
     switch(this.ctype){
       case "daily":
-        this.start_Date = range?.from?.format('YYYY-MM-DD');
-        this.end_date = range?.to?.format('YYYY-MM-DD');
+        this.multidate = range;
+
+        if(this.multidate.length > 0 ){
+          this.start_Date = this.multidate[0].format('YYYY-MM-DD');
+          this.end_date = this.multidate[this.multidate.length-1].format('YYYY-MM-DD');
+          console.log(this.start_Date, this.end_date, this.multidate)
+        }
       break;
       case "weekly":
         this.start_Date = range.from.format('YYYY-MM-DD');
@@ -143,9 +149,10 @@ export class AddSpotComponent extends BasePage implements OnInit {
       break;
     }
 
+
     switch(this.ctype){
       case "daily":
-        // this.end_date = range.from.add(1, 'week').subtract(1, 'day').format('YYYY-MM-DD');
+        // this.end_date = range.from.add(1, 'day').subtract(1, 'day').format('YYYY-MM-DD');
       break;
       case "weekly":
         this.end_date = range.from.add(1, 'week').subtract(1, 'day').format('YYYY-MM-DD');
@@ -157,8 +164,11 @@ export class AddSpotComponent extends BasePage implements OnInit {
 
     this.dateRange = null;
 
-    this.dateRange = /* this.ctype == "daily" ? null : */ { from: moment(this.start_Date), to: moment(this.end_date) };
+    this.dateRange = this.ctype == "daily" ? null : { from: moment(this.start_Date), to: moment(this.end_date) };
 
+    // if(!this.dateRange){
+    //   return;
+    // }
     let dobj = {
       detail: {
         value: this.start_Date
@@ -171,6 +181,7 @@ export class AddSpotComponent extends BasePage implements OnInit {
       }
     }
 
+    console.log(dobj, eobj)
     this.startDateChange(dobj);
     this.endDateChange(eobj);
   }
@@ -189,7 +200,16 @@ export class AddSpotComponent extends BasePage implements OnInit {
     console.log('tjhis sjdsdasdas');
     this.modals.dismiss();
   }
+
+  isDailyPackageDone(){
+
+
+    let flag = this.start_Date && this.end_date;
+    return flag;
+  }
+
   async addLocation() {
+
     if (this.edit === true) {
       let data = {
         id: this.id,
@@ -258,12 +278,16 @@ export class AddSpotComponent extends BasePage implements OnInit {
     this.secondDate = new Date($event.detail.value);
     const diffDays = Math.round(Math.abs((this.firstDate - this.secondDate) / oneDay));
     console.log("diffDays", diffDays);
-    if (diffDays < 4) {
+
+
+    if (this.multidate.length > 0) {
       this.dailyPackage = true;
     }
     else {
       this.dailyPackage = false;
-    } if (diffDays > 5) {
+    }
+
+    if (diffDays > 5) {
       this.weeklyPackage = true;
       if(this.weeklyPackage = true)
       {
@@ -273,6 +297,7 @@ export class AddSpotComponent extends BasePage implements OnInit {
     else {
       this.weeklyPackage = false;
     }
+
     if (diffDays > 28) {
       this.monthlyPackage = true;
       if(this.monthlyPackage = true)

@@ -48,7 +48,7 @@ export class AddRvPage extends BasePage implements OnInit {
   ];
   paths: any[] = [];
   spotName: any;
-  step = 2;
+  step = 1;
   loading = false;
   spotlist = [];
   upload_image = false;
