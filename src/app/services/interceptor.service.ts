@@ -19,6 +19,7 @@ export class InterceptorService implements HttpInterceptor {
     return from(this.callToken()).pipe(
       switchMap(token => {
         const cloneRequest = this.addSecret(req, token);
+        console.log(cloneRequest);
         return next.handle(cloneRequest);
       })
     );
