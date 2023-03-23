@@ -35,6 +35,7 @@
     "@mobiscroll/angular": "https://npm.mobiscroll.com/@mobiscroll/angular-trial/-/angular-trial-5.22.1.tgz",
     "@pscoped/ngx-pub-sub": "^5.0.0",
     "cordova-plugin-stripe": "^1.5.3",
+    "crypto-js": "^4.1.1",
     "ion2-calendar": "^3.5.0",
     "ionicons": "^6.0.3",
     "moment": "^2.29.4",
