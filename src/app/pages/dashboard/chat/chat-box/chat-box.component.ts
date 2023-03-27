@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Injector } from '@angular/core';
+import { Component, OnInit, Input, Injector, ViewChild } from '@angular/core';
+import { IonContent } from '@ionic/angular';
 import { BasePage } from 'src/app/pages/base-page/base-page';
 import { SocketService } from 'src/app/services/socket.service';
 
@@ -11,7 +12,7 @@ export class ChatBoxComponent extends BasePage implements OnInit {
 
 
   @Input() data: any;
-  // @ViewChild(ScrollToBottomDirective)
+  @ViewChild(IonContent) content!: IonContent
   // scroll: ScrollToBottomDirective;
   messagesRes: any;
   currentUser: any;
@@ -52,6 +53,10 @@ export class ChatBoxComponent extends BasePage implements OnInit {
         this.messages = msgs.reverse();
         this.loading = false;
 
+        setTimeout( () => {
+          this.content.scrollToBottom();
+        }, 500)
+
 
 
       }
@@ -60,6 +65,9 @@ export class ChatBoxComponent extends BasePage implements OnInit {
     this.events.subscribe("received:chat", data => {
       console.log(data);
       this.messages.push(data);
+      setTimeout( () => {
+        this.content.scrollToBottom();
+      }, 500)
     })
 
   }
@@ -109,6 +117,7 @@ export class ChatBoxComponent extends BasePage implements OnInit {
 
     this.message = null;
     this.loading = false;
+
 
     // let time = moment('01:15:00 PM', 'h:mm:ss A').format('HH:mm:ss');
     // console.log("tiem " , time);

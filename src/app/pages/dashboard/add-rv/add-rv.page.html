@@ -57,7 +57,7 @@
       </ion-item>
 
       <ion-item *ngFor="let item of spotlist" lines="none">
-        <ion-label (click)="goToEditPark(item)">
+        <ion-label (click)="goToEditPark(item)" class="ion-text-wrap">
           <h2>{{item['spot_name']}}</h2>
           <!-- <ion-button style="height: 25px; font-size: 12px; margin-left: 13.5vh;"> Edit Park</ion-button>
           <ion-button style="height: 25px; font-size: 12px;"> Delete Park</ion-button> -->

@@ -1,5 +1,6 @@
 import { NetworkService } from 'src/app/services/network.service';
 import { Injectable } from '@angular/core';
+import * as _ from 'underscore';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,78 @@ export class CartService {
       this.loading = true;
       const res = await this.network.getCart();
       console.log(res);
+
+      if(!res['list']){
+        resolve(null)
+        return;
+      }
+
+      if(!res['list']['cart_items']){
+        resolve(null)
+        return
+      }
+
+
+      if(res['list']['cart_items']){
+        // combine cart list items and their price
+
+        let sor = _.sortBy(res['list']['cart_items'], 'available_start_date')
+
+        const list45 = _.groupBy(sor, 'spot_id');
+        console.log(list45);
+
+        let array13815: any[] = [];
+        for (const [key, value] of Object.entries(list45)) {
+          console.log(`${key}: ${value}`);
+
+
+
+          console.log(value[0]);
+          let f = value[0] as any;
+
+          let red = value.reduce( (prev, curr) => {
+            return prev + parseInt(curr['price'])
+          }, 0);
+
+
+          f['price'] = red;
+
+          f['available_start_date'] = value[0]['available_start_date'];
+          f['available_end_date'] = value[value.length - 1]['available_end_date'];
+          console.log(value[value.length - 1]['available_end_date']);
+
+
+
+
+
+
+          array13815.push(f);
+
+        }
+
+        console.log(array13815)
+
+        res['list']['cart_items'] = array13815;
+
+
+
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       this.cart = res['list'];
       // this.fee = res['fee'];
       await this.getCartTotal();
@@ -44,7 +117,7 @@ export class CartService {
       this.cart.cart_items
       this.total = this.cart.cart_items.reduce( (prev, next) => {
         console.log();
-        
+
         return prev + Math.round(next['price']);
       }, 0);
 

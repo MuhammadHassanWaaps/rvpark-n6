@@ -12,6 +12,7 @@ import { DayConfig, CalendarComponentOptions } from 'ion2-calendar';
   styleUrls: ['./add-spot.component.scss'],
 })
 export class AddSpotComponent extends BasePage implements OnInit {
+
   date_array: any;
   single_date;
   daily;
@@ -24,7 +25,7 @@ export class AddSpotComponent extends BasePage implements OnInit {
   end_date;
   firstDate;
   secondDate;
-  multidate : any;
+  multidate : any[] = [];
   ctype = "daily";
 
   @Input() public park_id;
@@ -94,7 +95,7 @@ export class AddSpotComponent extends BasePage implements OnInit {
         this.optionsRange.pickMode = 'multi';
       break;
       case "weekly":
-        this.optionsRange.pickMode = 'range';
+        this.optionsRange.pickMode = 'multi';
       break;
       case "monthly":
         this.optionsRange.pickMode = 'range';
@@ -127,21 +128,36 @@ export class AddSpotComponent extends BasePage implements OnInit {
   getSetDates($event){
 
     console.log($event);
-    let range = $event;
-
+    let range = $event
+    // return;
     switch(this.ctype){
       case "daily":
-        this.multidate = range;
+        this.multidate = range.sort((a, b) => a.unix() - b.unix());
 
         if(this.multidate.length > 0 ){
           this.start_Date = this.multidate[0].format('YYYY-MM-DD');
           this.end_date = this.multidate[this.multidate.length-1].format('YYYY-MM-DD');
           console.log(this.start_Date, this.end_date, this.multidate)
         }
+
+        if(this.multidate.length >= 6 && this.multidate.length <= 28){
+          this.ctype = 'weekly'
+        }
       break;
       case "weekly":
-        this.start_Date = range.from.format('YYYY-MM-DD');
-        this.end_date = range.to.format('YYYY-MM-DD');
+
+
+        this.multidate = range.sort((a, b) => a.unix() - b.unix());
+
+        if(this.multidate.length > 0 ){
+          this.start_Date = this.multidate[0].format('YYYY-MM-DD');
+          this.end_date = this.multidate[this.multidate.length-1].format('YYYY-MM-DD');
+          console.log(this.start_Date, this.end_date, this.multidate)
+        }
+
+
+        // this.start_Date = range.from.format('YYYY-MM-DD');
+        // this.end_date = range.to.format('YYYY-MM-DD');
       break;
       case "monthly":
         this.start_Date = range.from.format('YYYY-MM-DD');
@@ -155,7 +171,7 @@ export class AddSpotComponent extends BasePage implements OnInit {
         // this.end_date = range.from.add(1, 'day').subtract(1, 'day').format('YYYY-MM-DD');
       break;
       case "weekly":
-        this.end_date = range.from.add(1, 'week').subtract(1, 'day').format('YYYY-MM-DD');
+        // this.end_date = range.from.add(1, 'week').subtract(1, 'day').format('YYYY-MM-DD');
       break;
       case "monthly":
         this.end_date = range.from.add(1, 'month').subtract(1, 'day').format('YYYY-MM-DD');
@@ -163,8 +179,8 @@ export class AddSpotComponent extends BasePage implements OnInit {
     }
 
     this.dateRange = null;
+    this.dateRange = (this.ctype == "daily" || this.ctype == "weekly") ? null : { from: moment(this.start_Date), to: moment(this.end_date) };
 
-    this.dateRange = this.ctype == "daily" ? null : { from: moment(this.start_Date), to: moment(this.end_date) };
 
     // if(!this.dateRange){
     //   return;
@@ -181,9 +197,12 @@ export class AddSpotComponent extends BasePage implements OnInit {
       }
     }
 
-    console.log(dobj, eobj)
-    this.startDateChange(dobj);
-    this.endDateChange(eobj);
+    console.log(dobj, eobj);
+    if(this.ctype == "monthly" ){
+      this.startDateChange(dobj);
+      this.endDateChange(eobj);
+    }
+
   }
 
 
@@ -227,6 +246,15 @@ export class AddSpotComponent extends BasePage implements OnInit {
       const res = await this.network.updateSpots(data)
       this.modals.dismiss();
     } else {
+
+      // specific work for daily multiselect
+
+
+
+
+
+
+
       if (
         this.park_id === "" || this.park_id === " " || this.park_id === undefined ||
         this.spot_name === "" || this.spot_name === " " || this.spot_name === undefined ||
@@ -241,20 +269,89 @@ export class AddSpotComponent extends BasePage implements OnInit {
 
         this.alert.showAlert("Enter Details")
       } else {
-        let data = {
+
+        let datesArrayObj: any[] = [];
+        let data: any = {
           park_id: this.park_id,
           spot_name: this.spot_name,
           spot_location: this.location ?? "USA",
-          available_spot_date: [{
+          available_spot_date: []
+        };
+
+
+        if(this.ctype == "weekly"){
+
+          if(this.multidate.length != 7){
+            this.utility.presentFailureToast("Please select seven days in total");
+            return;
+          }
+
+          if(this.multidate.length > 0 ){
+
+            for(var i = 0; i < this.multidate.length; i++){
+
+              let obj = {
+                starting_date: moment(this.multidate[i]).format('YYYY-MM-DD'),
+                ending_date: moment(this.multidate[i]).format('YYYY-MM-DD'),
+                daily_price: this.daily ? this.daily : "",
+                weekly_price: this.weekly ? this.weekly : "",
+                monthly_price: this.monthly ? this.monthly : ""
+              }
+
+              data.available_spot_date.push(obj);
+
+            }
+
+
+          }
+
+
+
+        } else
+
+        if(this.ctype == "daily"){
+
+          if(this.multidate.length > 0 ){
+
+            for(var i = 0; i < this.multidate.length; i++){
+
+              let obj = {
+                starting_date: moment(this.multidate[i]).format('YYYY-MM-DD'),
+                ending_date: moment(this.multidate[i]).format('YYYY-MM-DD'),
+                daily_price: this.daily ? this.daily : "",
+                weekly_price: this.weekly ? this.weekly : "",
+                monthly_price: this.monthly ? this.monthly : ""
+              }
+
+              data.available_spot_date.push(obj);
+
+            }
+
+
+          }
+
+
+
+        } else {
+
+          datesArrayObj = [{
             starting_date: this.start_Date,
             ending_date: this.end_date,
             daily_price: this.daily ? this.daily : "",
             weekly_price: this.weekly ? this.weekly : "",
             monthly_price: this.monthly ? this.monthly : ""
-          }]
-        };
+          }];
+
+          data.available_spot_date = datesArrayObj;
+
+        }
+
         const res = await this.network.addSpots(data)
         this.modals.dismiss();
+
+
+
+
       }
 
     }
@@ -273,40 +370,41 @@ export class AddSpotComponent extends BasePage implements OnInit {
     console.log("daily", this.daily);
   }
   endDateChange($event) {
-    const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-    this.firstDate = new Date(this.daily);
-    this.secondDate = new Date($event.detail.value);
-    const diffDays = Math.round(Math.abs((this.firstDate - this.secondDate) / oneDay));
-    console.log("diffDays", diffDays);
+
+    // const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+    // this.firstDate = new Date(this.daily);
+    // this.secondDate = new Date($event.detail.value);
+    // const diffDays = Math.round(Math.abs((this.firstDate - this.secondDate) / oneDay));
+    // console.log("diffDays", diffDays);
 
 
-    if (this.multidate.length > 0) {
-      this.dailyPackage = true;
-    }
-    else {
-      this.dailyPackage = false;
-    }
+    // if (this.multidate.length > 0) {
+    //   this.dailyPackage = true;
+    // }
+    // else {
+    //   this.dailyPackage = false;
+    // }
 
-    if (diffDays > 5) {
-      this.weeklyPackage = true;
-      if(this.weeklyPackage = true)
-      {
-        this.ctyleChange(this.weeklyPackage)
-      }
-    }
-    else {
-      this.weeklyPackage = false;
-    }
+    // if (this.multidate.length > 6 && this.multidate.length <= 28) {
+    //   this.weeklyPackage = true;
+    //   if(this.weeklyPackage = true)
+    //   {
+    //     this.ctyleChange(this.weeklyPackage)
+    //   }
+    // }
+    // else {
+    //   this.weeklyPackage = false;
+    // }
 
-    if (diffDays > 28) {
-      this.monthlyPackage = true;
-      if(this.monthlyPackage = true)
-      {
-        this.ctyleChange(this.monthlyPackage)
-      }
-    }
-    else {
-      this.monthlyPackage = false;
-    }
+    // if (diffDays > 28) {
+    //   this.monthlyPackage = true;
+    //   if(this.monthlyPackage = true)
+    //   {
+    //     this.ctyleChange(this.monthlyPackage)
+    //   }
+    // }
+    // else {
+    //   this.monthlyPackage = false;
+    // }
   }
 }

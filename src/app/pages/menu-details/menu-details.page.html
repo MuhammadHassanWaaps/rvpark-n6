@@ -88,7 +88,7 @@
       <h1 class="sanseriflf demibold">{{ 'Spots Details' }}</h1>
       <!-- <ion-radio-group value="strawberries" [(ngModel)]="selectedPackageId" multiple="true"> -->
       <div *ngFor="let item of data.park_sopts">
-        <div *ngFor="let aitem of item['available_date']; let i= index" >
+        <div *ngFor="let aitem of transform25(item['available_date']); let i= index" >
           <ion-card class="ion-padding"
             [ngClass]="{cssClass: item.availability == 0}" >
             <ion-item
@@ -127,7 +127,7 @@
               </ion-item>
             </ion-list>
 
-            <ion-list *ngFor="let dat of item['available_date']">
+            <ion-list *ngFor="let dat of transform25(item['available_date'])">
               <!-- *ngIf="item.availability == 1" -->
               <ion-radio-group name="radio-group"
                 [(ngModel)]="dat.selected_package">

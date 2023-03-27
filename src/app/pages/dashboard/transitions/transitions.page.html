@@ -16,13 +16,16 @@
 <ion-card>
   <ion-card-header>
     <ion-card-title>Total Amount</ion-card-title>
+    <ion-card-subtitle>Select any Order For Detail</ion-card-subtitle>
   </ion-card-header>
 
   <ion-card-content>
-{{totalAmount}}
+    {{totalAmount}}
   </ion-card-content>
 </ion-card>
 <ion-content class="ion-padding">
+
+
 
   <div class="header-row-254646">
     <div class="p-item-687 medium">
@@ -35,7 +38,7 @@
       Payment
     </div>
     <div class="p-item-687 medium">
-      Status
+      OID
     </div>
     <div class="p-item-687 medium">
       Details
@@ -53,17 +56,18 @@
       {{item?.receiver?.name}}
     </div>
     <div class="p-item-687 medium">
-      {{item.created_at | date: 'shortDate' }}
+      {{item.created_at | date: 'yyyy-MM-dd' }}
     </div>
     <div class="p-item-687 medium">
-      ${{ item?.amount}}
+      ${{ item?.payment_recieved}}
     </div>
     <div class="p-item-687 medium">
-      Pending
+      {{ item?.order_id}}
     </div>
-    <div class="p-item-687 medium">
+    <div class="p-item-687 medium" (click)="details(item)">
       <img src="assets/svgs/dot-round.svg" />
     </div>
+
   </div>
 
 

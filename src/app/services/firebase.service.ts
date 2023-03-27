@@ -82,7 +82,7 @@ export class FirebaseService {
       PushNotifications.addListener('registration', (token: Token) => {
         localStorage.setItem('fcm_token', token.value);
         console.log(token);
-        
+
       });
 
       PushNotifications.addListener('registrationError', (error: any) => {
@@ -93,10 +93,21 @@ export class FirebaseService {
         'pushNotificationReceived',
         (notification: PushNotificationSchema) => {
 
-          console.log("here it falls through")
+          let obj = notification?.data?.park_id;
 
-          this.events.publish('dashboard:notificationReceived');
-          this.events.publish('dashboard:refreshpage');
+          // if(obj){
+            console.log("here it falls through", notification?.data);
+            if(obj){
+              localStorage.setItem('is_move_to_notifications', 'yes');
+              localStorage.setItem('park_id', obj);
+            }
+
+          // }
+
+          // this.events.publish('dashboard:redirecttochannelpage', notification);
+
+          // this.events.publish('dashboard:notificationReceived');
+          // this.events.publish('dashboard:refreshpage');
 //          this.audio.play('');
         }
       );
@@ -104,11 +115,20 @@ export class FirebaseService {
       PushNotifications.addListener(
         'pushNotificationActionPerformed',
         (notification: ActionPerformed) => {
-          this.events.publish('dashboard:refreshpage');
 
-          localStorage.setItem('is_move_to_notifications', 'yes');
 
-          this.events.publish('dashboard:redirecttonotificationspage');
+          // this.events.publish('dashboard:refreshpage');
+          let obj = notification?.notification.data?.park_id;
+          // if(obj){
+            console.log("here it falls through", obj)
+            if(obj){
+              localStorage.setItem('is_move_to_notifications', 'yes');
+              localStorage.setItem('park_id', obj);
+            }
+          // }
+
+
+          // this.events.publish('dashboard:redirecttochannelpage', notification);
         }
       );
 

@@ -34,6 +34,7 @@
     "@ionic/angular": "^6.1.9",
     "@mobiscroll/angular": "https://npm.mobiscroll.com/@mobiscroll/angular-trial/-/angular-trial-5.22.1.tgz",
     "@pscoped/ngx-pub-sub": "^5.0.0",
+    "@types/underscore": "^1.11.4",
     "cordova-plugin-stripe": "^1.5.3",
     "crypto-js": "^4.1.1",
     "ion2-calendar": "^3.5.0",
@@ -44,6 +45,7 @@
     "rxjs": "~7.5.0",
     "swiper": "^8.4.6",
     "tslib": "^2.3.0",
+    "underscore": "^1.13.6",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

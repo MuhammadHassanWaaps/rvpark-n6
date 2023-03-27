@@ -62,7 +62,7 @@
     </div>
   </div> -->
   <h6 class="head">Packages*</h6>
-  <div *ngIf="isDailyPackageDone()">
+  <div *ngIf="(ctype === 'daily' || ctype === 'weekly' || ctype === 'monthly' )">
     <h6 class="head">Daily</h6>
     <div class="most-input-outer" style="margin-top: -10px">
       <div class="round-box">
@@ -73,7 +73,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="weeklyPackage">
+  <div *ngIf="(ctype === 'weekly' || ctype === 'monthly' )">
     <h6 class="head">Weekly</h6>
     <!-- <h6 class="head">{{daily}} - {{weekly}}</h6> -->
     <div class="most-input-outer">
@@ -85,7 +85,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="monthlyPackage">
+  <div *ngIf="( ctype === 'monthly' ) ">
     <h6 class="head">Monthly</h6>
 
     <!-- <h6 class="head">{{daily}} - {{weekly}}</h6> -->

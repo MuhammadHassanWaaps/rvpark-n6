@@ -6,28 +6,76 @@
           <ion-button (click)="closeModal()">
             <ion-icon name="chevron-back-outline" color="dark"></ion-icon>
           </ion-button>
-          <h4 style="color: black;" class="sanseriflf demibold">Transactions Details</h4>
+          <h4 style="color: black;" class="sanseriflf demibold">Details</h4>
         </ion-buttons>
       </div>
     </div>
   </div>
 </ion-header>
 <ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>ORDER # {{data?.order_id}}</ion-card-title>
+      <ion-card-subtitle><ion-badge></ion-badge> <ion-badge class="ion-margin-start">{{ data?.created_at| date: 'yyyy-MM-dd' }}</ion-badge></ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <p>Name: </p>
+          <p slot="end"> {{ data?.receiver?.name}}</p>
+        </ion-item>
+        <ion-item>
+          <p>Amount: </p>
+          <p slot="end"> {{ data?.payment_recieved}}</p>
+        </ion-item>
+        <ion-item>
+          <p>Details: </p>
+          <p slot="end"> <ion-icon name="chevron-down-outline"></ion-icon></p>
+        </ion-item>
+        <ion-item *ngFor="let item of data?.order_detail?.order_items">
+          <ion-label class="ion-text-wrap">
+            <p><small>{{item.available_start_date | date: 'yyyy-MM-dd' }} - {{item.available_end_date | date: 'yyyy-MM-dd' }} </small> </p>
+            <p >{{item.package}}</p>
+          </ion-label>
+
+        </ion-item>
+      </ion-list>
+
+    </ion-card-content>
+  </ion-card>
+
+  <!-- <ion-list>
+    <ion-item *ngFor="let item of OrderDetails?.order_items">
+      <ion-label>
+        <h2>SPOT # {{ item.spot_id}} - {{item.spot_address}}</h2>
+        <p><small>{{item['available_start_date'] | date: 'yyyy-MM-dd' }} - {{item['available_end_date']| date: 'yyyy-MM-dd' }}</small></p>
+        <p>{{ item['package'] }} - ${{ item['price'] }}</p>
+      </ion-label>
+
+    </ion-item>
+  </ion-list> -->
+
+
   <div class="bn765">
+
+
     <div class="menu-list-items-outer">
+
       <div class="menu-list-item" *ngFor="let item of OrderDetails?.order_items">
         <div class="c123">
-          <div>
+          <!-- <div>
             <div class="image-outer-box" [style.background]="'url(' + getItemImage() + ')'"></div>
-          </div>
+          </div> -->
           <div class="text-box-outer">
             <div class="text-box-inner">
               <div class="name sanseriflf demibold">
                 {{item?.park?.name}}
               </div>
+              <div class="pl-box-255 sanseriflf" style="color: green;">{{item['available_start_date']}} {{item['available_end_date']}}</div>
               <div class="price-line-544">
                 <div class="con1">
-                  <div class="pl-box-255 sanseriflf" style="color: green;">Plot: {{item?.park?.address}}</div>
+
                 </div>
                 <div class="pl-box-256 sanseriflf demibold">/day</div>
                 <div class="pl-box-256  "
@@ -42,32 +90,9 @@
                 </div>
               </div>
             </div>
-            <div class="quantity-outer">
-              <img src="assets/icons/Icon material-delete.png" />
-            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="checkout">
-      <div class="checkout-price-main">
-        <h1>Payment</h1>
-        <div class="paymentContainer">
-          <div class="payment">
-            <span class="paymentKey sanseriflf demibold">PRICE</span>
-            <span class="paymenyValue sanseriflf demibold">$ {{OrderDetails?.total_amount}}</span>
-          </div>
-          <!-- <div class="payment">
-            <span class="paymentKey sanseriflf demibold">FEES</span>
-            <span class="paymenyValue">$ {{fee}}</span>
-          </div> -->
-          <!-- <div class="payment">
-            <span class="paymentKey sanseriflf demibold">TOTAL </span>
-            <span class="paymenyValue">$ {{net_total}}</span>
-          </div> -->
-        </div>
-      </div>
-
     </div>
   </div>
 

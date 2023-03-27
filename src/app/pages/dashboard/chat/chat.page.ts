@@ -94,6 +94,31 @@ export class ChatPage  extends BasePage implements  OnInit {
     const res = await this.network.getChannels(this.park_id);
     console.log(res);
     this.messages = res;
+
+    // check if channel id redirect is there
+    let isM = localStorage.getItem('is_move_to_notifications');
+    if(isM == 'yes'){
+      localStorage.removeItem('is_move_to_notifications');
+      let channel = localStorage.getItem('park_id');
+      localStorage.removeItem('park_id');
+      let obj = {
+        park_id: channel
+      }
+
+      console.log(obj)
+
+      this.goToChatRoom(obj);
+
+
+
+    }
+
+
+
+
+
+
+
   }
 
   async handleRefresh($event){

@@ -1,0 +1,55 @@
+<ion-header [class.curve-header]="false">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" (click)="back()">
+      <ion-button>
+        <ion-icon  name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title >
+      <h4 class="sanseriflf demibold">
+        Chat with Vendor
+      </h4>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-avatar slot="start">
+      <img *ngIf="!loading" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      <ion-spinner *ngIf="loading" class="ion-text-center"></ion-spinner>
+    </ion-avatar>
+    <ion-label>
+      <h2>{{data.name}}</h2>
+      <p>{{data.city}} {{ data.country }}</p>
+    </ion-label>
+  </ion-item>
+  <div class="chat-box">
+    <div class="chat-mid" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+      <div class="message-box-outer">
+
+        <div [class.text-message]="item.sender_id == currentUser.id" [class.text-message2]="item.sender_id != currentUser.id" *ngFor="let item of messages">
+          <!-- <div class="text poppins" *ngIf="item.user_id == currentUser.id">
+            {{ item?.message }}
+          </div> -->
+          <div class="text poppins">
+            {{ item?.content }}
+          </div>
+          <!-- <div class="mtime poppins" *ngIf="item.user_id == currentUser.id">
+            {{ item?.created_at | date:'mediumTime'}}
+          </div> -->
+          <div class="mtime poppins">
+            {{ item?.created_at | date:'mediumTime'}}
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="type-box">
+      <input [(ngModel)]="message" type="text" placeholder="Type a Message" />
+      <!-- <img  src="assets/images/Send icon.png" /> -->
+      <ion-icon *ngIf="!loading" (click)="sendMessage()" name="send-outline"></ion-icon>
+      <ion-icon *ngIf="loading" name="chatbox-ellipses-outline"></ion-icon>
+    </div>
+  </div>
+
+</ion-content>

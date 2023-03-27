@@ -18,11 +18,63 @@ export class InterceptorService implements HttpInterceptor {
 
     return from(this.callToken()).pipe(
       switchMap(token => {
-        const cloneRequest = this.addSecret(req, token);
+        var cloneRequest = this.addSecret(req, token);
+        cloneRequest = this.encryptData(cloneRequest, '123')
         console.log(cloneRequest);
         return next.handle(cloneRequest);
       })
     );
+
+  }
+
+  encryptData(request: HttpRequest<any>, value: any){
+
+    // if(request.method == 'GET'){
+
+    //     if (request.url.indexOf("?") > 0) {
+
+    //       let mainUrl = request.url.substr(0, request.url.indexOf("?") + 1);
+    //       let parts = request.url.substr(request.url.indexOf("?") + 1, request.url.length)
+
+    //       let encoded: string = btoa(parts);
+
+    //       console.log(mainUrl, parts, encoded);
+    //       let r2 = request.clone({
+    //         url: mainUrl + encoded
+    //       })
+
+    //       //return r2;
+
+    //     }
+
+    //   }
+
+      // if(request.method == 'POST'){
+
+      //   let r3;
+      //   if (request.url.indexOf("?") > 0) {
+      //     let mainUrl = request.url.substr(0, request.url.indexOf("?") + 1);
+      //     let parts = request.url.substr(request.url.indexOf("?") + 1, request.url.length)
+
+      //     let encoded: string = btoa(parts);
+
+      //     console.log(mainUrl, parts, encoded);
+      //     r3 = request.clone({
+      //       url: mainUrl + encoded
+      //     })
+      //   }
+
+      //   if (request.body || request.body.length > 0) {
+      //     var r4 = r3 ? r3 : request;
+      //     const r5 = r4.clone({
+      //         body: btoa(JSON.stringify(request.body))
+      //     });
+      //     // return r5;
+      //   }
+
+      // }
+
+      return request
 
   }
 

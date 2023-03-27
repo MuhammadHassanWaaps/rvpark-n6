@@ -1,6 +1,3 @@
-import { ChatPageModule } from './../dashboard/chat/chat.module';
-import { ChatListComponent } from './../dashboard/chat/chat-list/chat-list.component';
-
 import { AddRvPage } from './../dashboard/add-rv/add-rv.page';
 import {
   Component,
@@ -18,6 +15,7 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
 import { PackagesPage } from '../dashboard/packages/packages.page';
 import { ChatBoxComponent } from '../dashboard/chat/chat-box/chat-box.component';
 import { ChatPage } from '../dashboard/chat/chat.page';
+import * as _ from 'underscore';
 
 @Component({
   selector: 'app-menu-details',
@@ -185,6 +183,11 @@ export class MenuDetailsPage extends BasePage implements OnInit {
     this.loading = true;
     this.network.getSpotDetail({id: id}).then((res) => {
       console.log('getDetail', res);
+
+      let res3425 = this.parseDetails(res)
+
+
+
       this.data = res;
 
       // this.price = 0;
@@ -204,6 +207,105 @@ export class MenuDetailsPage extends BasePage implements OnInit {
       this.nav.pop();
       return;
     });
+
+  }
+
+  parseDetails(res: any) {
+
+    if(res['park_sopts'] && !(res['park_sopts'].length > 0)){
+      return res;
+    }
+
+    let array698678: any[] = [];
+
+    let parse7896 = res['park_sopts'].map( (item) => {
+
+      if(item['available_date'].length > 1){
+
+        let sor = _.sortBy(item['available_date'], 'available_start_date');
+        const list45 = _.groupBy(sor, 'spot_id');
+
+        let array13815: any[] = [];
+        for (const [key, value] of Object.entries(list45)) {
+          console.log(`${key}: ${value}`);
+
+          console.log(value[0]);
+          let f = value[0] as any;
+
+          let red = value.reduce( (prev, curr) => {
+            return prev + parseInt(curr['price'])
+          }, 0);
+
+
+          f['price'] = red;
+
+          f['available_start_date'] = value[0]['available_start_date'];
+          f['available_end_date'] = value[value.length - 1]['available_end_date'];
+          console.log(value[value.length - 1]['available_end_date']);
+          array13815.push(f);
+
+        }
+
+        console.log(array13815)
+
+        item['available_date'] = array13815;
+
+
+
+      }
+
+      return item;
+
+    });
+
+    return parse7896
+
+    // if(res['list']['cart_items']){
+    //   // combine cart list items and their price
+
+    //   let sor = _.sortBy(res['list']['cart_items'], 'available_start_date')
+
+    //   const list45 = _.groupBy(sor, 'spot_id');
+    //   console.log(list45);
+
+    //   let array13815: any[] = [];
+    //   for (const [key, value] of Object.entries(list45)) {
+    //     console.log(`${key}: ${value}`);
+
+
+
+    //     console.log(value[0]);
+    //     let f = value[0] as any;
+
+    //     let red = value.reduce( (prev, curr) => {
+    //       return prev + parseInt(curr['price'])
+    //     }, 0);
+
+
+    //     f['price'] = red;
+
+    //     f['available_start_date'] = value[0]['available_start_date'];
+    //     f['available_end_date'] = value[value.length - 1]['available_end_date'];
+    //     console.log(value[value.length - 1]['available_end_date']);
+
+
+
+
+
+
+    //     array13815.push(f);
+
+    //   }
+
+    //   console.log(array13815)
+
+    //   res['list']['cart_items'] = array13815;
+
+
+
+    // }
+
+
 
   }
 
@@ -382,5 +484,19 @@ export class MenuDetailsPage extends BasePage implements OnInit {
 
 
 
+  }
+
+  transform25(array: any[]){
+
+    console.log(array);
+
+
+
+
+    if(array[0]['daily_price'] != null){
+      return [array[0]];
+    }
+
+    return array;
   }
 }

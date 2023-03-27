@@ -25,7 +25,7 @@ export class SelectSpotComponent extends BasePage implements OnInit, AfterViewIn
   finalEndDate: any;
   startdate: any;
   selectedPackageId: any[] = [];
-
+  multidate : any[] = [];
   packageType = 'Daily';
   packagePrice = 0;
 
@@ -35,7 +35,7 @@ export class SelectSpotComponent extends BasePage implements OnInit, AfterViewIn
   _daysConfig: DayConfig[] = [];
   type = 'moment'; // 'string' | 'js-date' | 'moment' | 'time' | 'object'
   optionsRange: CalendarComponentOptions = {
-    pickMode: 'range',
+    pickMode: 'multi',
     // disableWeeks: [0, 1, 6],
     daysConfig: [],
     // to: new Date('2023-03-31'),
@@ -169,17 +169,17 @@ export class SelectSpotComponent extends BasePage implements OnInit, AfterViewIn
     return false;
   }
 
-  ctyleChange($event){
+  ctyleChange($event, nochange = false){
     console.log($event);
     let v = $event.target.value;
     console.log(v);
-    this.expression = false;
+    this.expression = nochange;
     switch(this.ctype){
       case "daily":
-        this.optionsRange.pickMode = 'range';
+        this.optionsRange.pickMode = 'multi';
       break;
       case "weekly":
-        this.optionsRange.pickMode = 'range';
+        this.optionsRange.pickMode = 'multi';
       break;
       case "monthly":
         this.optionsRange.pickMode = 'range';
@@ -207,19 +207,79 @@ export class SelectSpotComponent extends BasePage implements OnInit, AfterViewIn
     } else {
       this.selectedPackageId.push(this.aitem.id);
 
+      if(this.ctype == "weekly"){
 
-      let obj = {
-        "package_type": this.packageType,
-        "package_price": this.packagePrice,
-        "start_date": this.startdate,
-        "end_date": this.enddate,
-        "spot_id": this.aitem.spot_id
+        if(this.multidate.length != 7){
+          this.utility.presentFailureToast("Please select seven days in total");
+          return;
+        }
+
+        if(this.multidate.length > 0 ){
+
+          for(var i = 0; i < this.multidate.length; i++){
+
+            let obj = {
+              "package_type": this.packageType,
+              "package_price": this.packagePrice,
+              "start_date": moment(this.multidate[i]).format('YYYY-MM-DD'),
+              "end_date": moment(this.multidate[i]).format('YYYY-MM-DD'),
+              "spot_id": this.aitem.spot_id
+            }
+
+            this.network.addToCart(obj);
+
+          }
+
+
+        }
+
+
+
+      } else
+      if(this.ctype == 'daily'){
+
+        for(var i = 0; i < this.multidate.length; i++){
+
+          let obj = {
+            "package_type": this.packageType,
+            "package_price": this.packagePrice,
+            "start_date": moment(this.multidate[i]).format('YYYY-MM-DD'),
+            "end_date": moment(this.multidate[i]).format('YYYY-MM-DD'),
+            "spot_id": this.aitem.spot_id
+          }
+
+          this.network.addToCart(obj);
+
+        }
+
+      } else{
+
+        let obj = {
+          "package_type": this.packageType,
+          "package_price": this.packagePrice,
+          "start_date": this.startdate,
+          "end_date": this.enddate,
+          "spot_id": this.aitem.spot_id
+        }
+
+        console.log(obj);
+
+        const res = await this.network.addToCart(obj);
+        console.log(res);
+
       }
+      // let obj = {
+      //   "package_type": this.packageType,
+      //   "package_price": this.packagePrice,
+      //   "start_date": this.startdate,
+      //   "end_date": this.enddate,
+      //   "spot_id": this.aitem.spot_id
+      // }
 
-      console.log(obj);
+      // console.log(obj);
 
-      const res = await this.network.addToCart(obj);
-      console.log(res);
+      // const res = await this.network.addToCart(obj);
+      // console.log(res);
       this.utility.presentSuccessToast("Item added to cart");
       this.nav.pop();
 
@@ -293,17 +353,37 @@ export class SelectSpotComponent extends BasePage implements OnInit, AfterViewIn
     console.log($event);
     this.dateRange = null;
     const range = $event;
+
+
     // this.startdate = $event.from.format('YYYY-MM-DD');
     // this.enddate = $event.to.format('YYYY-MM-DD');
 
     switch(this.ctype){
       case "daily":
-        this.startdate = range.format('YYYY-MM-DD');
-        this.enddate = range.format('YYYY-MM-DD');
+        this.multidate = range.sort((a, b) => a.unix() - b.unix());
+
+        if(this.multidate.length > 0 ){
+          this.startdate = this.multidate[0].format('YYYY-MM-DD');
+          this.enddate = this.multidate[this.multidate.length-1].format('YYYY-MM-DD');
+          console.log(this.startdate, this.enddate, this.multidate)
+        }
+
+        if(this.multidate.length > 6 && this.multidate.length <= 28){
+          this.ctype = 'weekly'
+        }
       break;
       case "weekly":
-        this.startdate = range.from.format('YYYY-MM-DD');
-        this.enddate = range.to.format('YYYY-MM-DD');
+
+        this.multidate = range.sort((a, b) => a.unix() - b.unix());
+
+        if(this.multidate.length > 0 ){
+          this.startdate = this.multidate[0].format('YYYY-MM-DD');
+          this.enddate = this.multidate[this.multidate.length-1].format('YYYY-MM-DD');
+          console.log(this.startdate, this.enddate, this.multidate)
+        }
+
+        // this.startdate = range.from.format('YYYY-MM-DD');
+        // this.enddate = range.to.format('YYYY-MM-DD');
       break;
       case "monthly":
         this.startdate = range.from.format('YYYY-MM-DD');
@@ -313,21 +393,28 @@ export class SelectSpotComponent extends BasePage implements OnInit, AfterViewIn
 
     switch(this.ctype){
       case "daily":
-        this.enddate = range.format('YYYY-MM-DD');
+        // this.enddate = range.format('YYYY-MM-DD');
       break;
       case "weekly":
-        this.enddate = range.from.add(1, 'week').subtract(1, 'day').format('YYYY-MM-DD');
+        // this.enddate = range.from.add(1, 'week').subtract(1, 'day').format('YYYY-MM-DD');
       break;
       case "monthly":
         this.enddate = range.from.add(1, 'month').subtract(1, 'day').format('YYYY-MM-DD');
       break;
     }
 
+    this.dateRange = (this.ctype == "daily" || this.ctype == "weekly")  ? null : { from: moment(this.startdate), to: moment(this.enddate) };
 
 
-    this.dateRange = this.ctype == "daily" ? null : { from: moment(this.startdate), to: moment(this.enddate) };
+  }
 
+  transform26(array: any[]){
 
+    if(array[0]['daily_price'] != null){
+      return [array[0]];
+    }
+
+    return array;
   }
 
 

@@ -12,6 +12,7 @@ import { UtilityService } from './services/utility.service';
 import { Router } from '@angular/router';
 import { TransitionsPage } from './pages/dashboard/transitions/transitions.page';
 import { OrderHistoryComponent } from './pages/dashboard/user/order-history/order-history.component';
+import { FirebaseService } from './services/firebase.service';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +27,7 @@ export class AppComponent {
   isModalOpen;
   @Output('activeIndex') activeIndex: EventEmitter<any> =
     new EventEmitter<any>();
-  constructor(public menuCtrl: MenuController,  private router: Router, public platform: Platform, public utility: UtilityService, private modalController: ModalController, private modals: ModalService, public nav: NavService, public users: UserService) {
+  constructor(public menuCtrl: MenuController,  private router: Router, public platform: Platform, public utility: UtilityService, private modalController: ModalController, private modals: ModalService, public nav: NavService, public users: UserService, public fcm: FirebaseService) {
     this.get();
 
     platform.ready().then(() => {
@@ -60,7 +61,7 @@ export class AppComponent {
     console.log("initsjadfklasjd");
 
     this.platform.ready().then(async () => {
-      // await this.fcm.setupFMC();
+      await this.fcm.setupFMC();
     });
   }
 

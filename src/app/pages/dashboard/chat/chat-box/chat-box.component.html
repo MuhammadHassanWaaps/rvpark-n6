@@ -12,44 +12,40 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding">
-  <ion-item>
-    <ion-avatar slot="start">
-      <img *ngIf="!loading" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-      <ion-spinner *ngIf="loading" class="ion-text-center"></ion-spinner>
-    </ion-avatar>
-    <ion-label>
-      <h2>{{data.name}}</h2>
-      <p>{{data.city}} {{ data.country }}</p>
-    </ion-label>
-  </ion-item>
-  <div class="chat-box">
-    <div class="chat-mid" #scrollMe [scrollTop]="scrollMe.scrollHeight">
-      <div class="message-box-outer">
+<ion-content class="" #content>
 
-        <div [class.text-message]="item.sender_id == currentUser.id" [class.text-message2]="item.sender_id != currentUser.id" *ngFor="let item of messages">
-          <!-- <div class="text poppins" *ngIf="item.user_id == currentUser.id">
-            {{ item?.message }}
-          </div> -->
-          <div class="text poppins">
-            {{ item?.content }}
-          </div>
-          <!-- <div class="mtime poppins" *ngIf="item.user_id == currentUser.id">
-            {{ item?.created_at | date:'mediumTime'}}
-          </div> -->
-          <div class="mtime poppins">
-            {{ item?.created_at | date:'mediumTime'}}
-          </div>
-        </div>
+  <ion-list>
+    <ion-item>
+      <ion-avatar slot="start">
+        <img *ngIf="!loading" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        <ion-spinner *ngIf="loading" class="ion-text-center"></ion-spinner>
+      </ion-avatar>
+      <ion-label>
+        <h2>{{data.name}}</h2>
+        <p>{{data.city}} {{ data.country }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item *ngFor="let item of messages" [class.chat-input-box-blue]="item.sender_id != currentUser.id"  >
+      <ion-avatar slot="start">
+        <img [src]="( item['sender_id'] === currentUser['id']) ? 'https://ui-avatars.com/api/?name=ME' : 'https://ui-avatars.com/api/?name=YU' " >
+      </ion-avatar>
+      <ion-label class="ion-text-wrap">
+        <h2>{{ item?.content }}</h2>
+        <p><small>{{ item?.created_at | date:'mediumTime'}}</small></p>
 
-      </div>
-    </div>
-    <div class="type-box">
-      <input [(ngModel)]="message" type="text" placeholder="Type a Message" />
-      <!-- <img  src="assets/images/Send icon.png" /> -->
-      <ion-icon *ngIf="!loading" (click)="sendMessage()" name="send-outline"></ion-icon>
-      <ion-icon *ngIf="loading" name="chatbox-ellipses-outline"></ion-icon>
-    </div>
-  </div>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 
 </ion-content>
+<ion-footer>
+  <ion-item color="light" class="ion-margin-top ion-margin-bottom chat-input-box" lines="none">
+    <ion-input [(ngModel)]="message">
+
+    </ion-input>
+    <ion-button (click)="sendMessage()" [disabled]="loading" >
+      <ion-icon *ngIf="!loading"  name="send-outline"></ion-icon>
+      <ion-icon *ngIf="loading" name="chatbox-ellipses-outline"></ion-icon>
+    </ion-button>
+  </ion-item>
+</ion-footer>

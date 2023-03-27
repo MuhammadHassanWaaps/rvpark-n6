@@ -22,7 +22,7 @@
     </ion-label>
     <br>
     <ion-label class="head" >
-      Spot Location: <span style="color: #167206;">{{item['spot_location']}}</span> 
+      Spot Location: <span style="color: #167206;">{{item['spot_location']}}</span>
     </ion-label>
   </div>
   <div class="round-box inputs">
@@ -49,7 +49,7 @@
       </h2>
     </div> -->
     <h6 class="head">Select Package</h6>
-    <div class="round-box input"  *ngFor="let dat of item['available_date']">
+    <div class="round-box input"  *ngFor="let dat of transform26(item['available_date'])">
       <ion-select placeholder="Select Package" name="radio-group"
       [(ngModel)]="packageType"
       (ionChange)="changePackage($event)">
@@ -65,7 +65,7 @@
           <input readonly id="start" [(ngModel)]="startdate" style="
             margin-top: 10px;
             border: none;"
-            
+
             type="text" placeholder="Start-Date"
             />
             <!-- (change)="dateChange($event)" -->
